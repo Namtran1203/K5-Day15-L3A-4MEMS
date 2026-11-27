@@ -4,30 +4,42 @@
 > Đầu mỗi mục ghi bước guide (`02-guide.md` trong repo đề) chỉ cách điền. Mỗi mục ngắn, có số và nguồn; chi tiết để ở file được trỏ tới. Xoá dòng hướng dẫn trong ngoặc vuông khi điền xong.
 
 Track C · Du lịch · Hướng C1 — Lập lịch một ngày ở một khu vui chơi.
-Data BTC cấp đã dùng (nếu có — không commit nguyên file): __
+Data BTC cấp đã dùng (nếu có — không commit nguyên file): Không có (Track C — nhóm tự đào review công khai từ *Disneyland Reviews* trên Kaggle và tự dựng dữ liệu giả lập `park.json`).
 
 ## §0. Hiện tại việc này diễn ra thế nào *(guide 1.1)*
-- Luồng hiện tại của việc này, trong khoá hoặc trên app thật (3–5 bước; ảnh chụp từ tài khoản của mình, đã che thông tin):
-- Công cụ / AI đang được dùng cho việc này (nếu có) + nguồn. Không kiểm được thì ghi "chưa kiểm":
+- **Luồng hiện tại (4 bước):**
+  1. Trưởng nhóm mở website/app khu vui chơi (như VinWonders, Sun World, Disneyland) hoặc xem bài review trên TikTok/Facebook để gom danh sách trò chơi, giờ mở cửa, giờ show và giá vé phụ thu.
+  2. Hỏi từng thành viên trong nhóm chat (Zalo/Messenger) về ngân sách, khung giờ đi và trò muốn chơi / trò sợ cảm giác mạnh.
+  3. Tự ghép lịch trình thủ công vào Ghi chú / Google Sheets, tự ước lượng thời gian đi bộ và cộng tổng tiền.
+  4. Khi đến nơi gặp trời mưa, trò đóng cửa bảo trì hoặc trễ giờ show, trưởng nhóm lại phải tra bản đồ giấy/app và đổi kế hoạch tại chỗ.
+- **Công cụ / AI đang được dùng:** Website/app chính thức của khu vui chơi (xem bản đồ, giờ mở cửa), Google Maps/Sheets, nhóm chat, và một số bạn hỏi thử ChatGPT/Gemini rời rạc (nhưng model không gắn công cụ kiểm giờ show, ngân sách hay trò đang đóng). *(Mức độ dùng công cụ AI thực tế ở nhóm bạn trẻ VN: chưa kiểm — sẽ xác nhận qua phỏng vấn/khảo sát trước CP3).*
 
 ## §1. Người dùng & bằng chứng *(guide 1.1, 1.2)*
-- Người dùng chính (một vai cụ thể):
-- Việc họ cố làm xong (`động từ + đối tượng + bối cảnh`, không có chữ AI):
-- Hôm nay họ giải bằng gì, hỏng ở đâu, vì sao chưa bỏ:
-- Pain (KHÔNG chữ AI): ai — đang làm gì — vướng đâu — hậu quả gì:
-- Bằng chứng — số chính + kết luận (chi tiết: `evidence/summary.md`): __
+- **Người dùng chính (một vai cụ thể):** Người lên kế hoạch (trưởng nhóm) của một nhóm bạn trẻ / sinh viên (3–6 người) đi khu vui chơi giải trí trọn 1 ngày.
+- **Việc họ cố làm xong:** Lập và điều chỉnh lịch trình 1 ngày tại khu vui chơi phù hợp khung giờ, ngân sách/người và sở thích khác nhau của cả nhóm.
+- **Hôm nay họ giải bằng gì, hỏng ở đâu, vì sao chưa bỏ:** Dùng bài review mạng xã hội + trang thông tin khu vui chơi + ghi chú/chat nhóm. Hỏng ở chỗ thông tin giờ show, trò bảo trì, giá phụ thu rời rạc nên tự cộng dễ sai, chồng giờ và lúng túng khi trời mưa; chưa bỏ được vì không có công cụ nào gom ràng buộc của cả nhóm vào một lần xếp lịch.
+- **Pain (KHÔNG chữ AI):** Trưởng nhóm bạn trẻ đi khu vui chơi 1 ngày phải tự tra tay hàng chục điểm chơi, khung giờ show, giá vé phụ thu và cân bằng sở thích khác nhau trong nhóm rồi tự xoay xở khi trời mưa hoặc trò đóng cửa, khiến họ mất nhiều thời gian chuẩn bị, dễ lỡ show, di chuyển vòng vèo hoặc vượt ngân sách dự kiến.
+- **Bằng chứng ban đầu CP2 (chi tiết: `evidence/data-mining.md`, tổng hợp hoàn chỉnh ở `evidence/summary.md` trước CP3):**
+  - Đào data công khai `DisneylandReviews.csv` (42.656 review TripAdvisor): **1.223/42.656 review (2,9%)** khớp nhóm từ khóa về giờ hoạt động, lỡ show hoặc trò đóng cửa; mẫu ngẫu nhiên 200 review (`seed 42`) có **9/200 (4,5%)**.
+  - Trích dẫn đầu: *“Quite a few of the other attractions in Fantasyland were shut down during our visit.”* — Review ID `317045022`.
+  - **Kết luận tạm thời CP2:** Đã có tín hiệu thực tế từ review công khai; nhóm đang tiếp tục kiểm chứng chéo bằng phỏng vấn ≥3 bạn trẻ và/hoặc khảo sát ≥20 người tại Việt Nam để chốt số chính trước CP3.
 
 ## §2. Impact & quyết định chọn *(guide 1.3)*
 
 | Hướng | Bao nhiêu người gặp | Bao nhiêu lần / tháng | Mỗi lần tốn gì | Impact / tháng | Làm kịp không | Chọn? |
 |---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |
+| **C1 · Lập lịch 1 ngày ở khu vui chơi** | ~300.000 lượt khách/tháng tại 1 khu vui chơi lớn *(tự ước tính; sẽ gắn link báo cáo công khai trước CP3)* · nhóm bạn trẻ/gia đình tự lập lịch | 1–2 lần / chuyến đi *(tự ước tính, kiểm lại bằng khảo sát CP3)* | ~45–60 phút tự tra lịch + rủi ro lỡ show / mất 1–2 giờ trải nghiệm *(tự ước tính)* | Cao & gặp lặp lại theo từng chuyến đi | Có (tool chỉ đọc, dễ kiểm bằng code) | **Chọn** |
+| **C2 · Lễ tân đề xuất đổi / nâng hạng phòng** | Lễ tân tại các khách sạn cỡ vừa–lớn *(tự ước tính)* | 10–30 ca / tuần / khách sạn *(tự ước tính)* | 10–15 phút tra phòng, chính sách, tính phí chênh *(tự ước tính)* | Cao theo ca trực | Khó (khó hẹn lễ tân thật phỏng vấn & test trong 10 giờ) | Loại |
+| **C3 · Hỗ trợ khách bị hủy chuyến bay** | Hành khách bị hủy/đổi chuyến bay *(tự ước tính)* | 1–2 lần / năm / hành khách *(tự ước tính)* | 30–90 phút xử lý, rủi ro mất lần đổi miễn phí hoặc chờ hoàn tiền tới 90 ngày (nguồn: Traveloka Help) | Cao mỗi ca sự cố | Trung bình (ít người quen bị hủy chuyến trong 1 tháng qua để phỏng vấn) | Loại |
 
-- **Impact / tháng** của hướng chọn = __ người × __ lần × __ phút = __ — nguồn từng thừa số: __ (không có nguồn thì ghi rõ *(tự ước tính)*)
-- Hướng ĐÃ LOẠI + vì sao (giữ lại, đừng xoá):
-- Số lần / tháng của từng kiểu người dùng (dùng cho persona ở §8):
+- **Impact / tháng (bản ước tính CP2 — sẽ cập nhật số có nguồn đầy đủ từ khảo sát & báo cáo công khai trước CP3):** `N` trưởng nhóm/tháng × `1` chuyến/tháng × `45–60` phút chuẩn bị & xoay xở *(tự ước tính; Hà Anh bổ sung nguồn từng thừa số trước CP3)*.
+- **Hướng ĐÃ LOẠI + vì sao:**
+  - *C2 (Lễ tân đổi/nâng phòng):* Người dùng là lễ tân khách sạn, nhóm không có sẵn người quen làm lễ tân để phỏng vấn và cho dùng thử trong 2 ngày hackathon.
+  - *C3 (Chuyến bay bị hủy):* Tần suất người xung quanh gặp sự cố hủy chuyến trong 1 tháng gần nhất thấp hơn nhiều so với đi khu vui chơi, khó thu phỏng vấn trực tiếp đúng khung thời gian 1 tháng.
+- **Số lần / tháng của từng kiểu người dùng (dự kiến cho persona ở §8):**
+  - Khách dùng ít (xếp 1 lần trước ngày đi): 1–2 lượt/chuyến *(tự ước tính)*.
+  - Khách dùng vừa (sửa lịch vài lần theo ý nhóm): 3–5 lượt/chuyến *(tự ước tính)*.
+  - Khách dùng nhiều (ngày mưa / trò đóng cửa phải xếp lại giữa ngày): 6–10 lượt/chuyến *(tự ước tính)*.
 
 ## §3. Giải pháp tương tự *(guide 2.1)*
 - **Disney Genie trong My Disney Experience** gợi ý lịch và hoạt động theo sở thích của nhóm, rồi gom kế hoạch trong mục My Plans. [Disney Genie — Walt Disney World](https://disneyworld.disney.go.com/experience-updates/genie/)
