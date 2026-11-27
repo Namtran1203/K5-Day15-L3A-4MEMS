@@ -1,0 +1,75 @@
+<mxGraphModel grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" page="1" pageScale="1" pageWidth="1224" pageHeight="660" background="#FFFFFF">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <mxCell id="title" parent="1" vertex="1" value="Lập lịch một ngày ở khu vui chơi" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#17263D;fontSize=30;fontStyle=1;">
+      <mxGeometry x="52" y="34" width="1120" height="44" as="geometry" />
+    </mxCell>
+    <mxCell id="subtitle" parent="1" vertex="1" value="Kiến trúc CP2 · K5-L3A-4MEMS · Người dùng dự kiến là trưởng nhóm bạn trẻ" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#425571;fontSize=15;">
+      <mxGeometry x="52" y="83" width="1120" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="input" parent="1" vertex="1" value="Số người, ngày đi, giờ đến và giờ rời khu. Ngân sách mỗi người, sở thích và điều kiện tham gia nếu cần." style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=0;spacingTop=49;spacingLeft=16;spacingRight=16;fontSize=15;fontColor=#16345B;fillColor=#EDF5FF;strokeColor=#7FA9D6;strokeWidth=1.5;">
+      <mxGeometry x="52" y="158" width="244" height="176" as="geometry" />
+    </mxCell>
+    <mxCell id="input-title" parent="input" vertex="1" value="INPUT" style="text;html=0;align=left;verticalAlign=middle;spacing=0;fontSize=16;fontStyle=1;fontColor=#16345B;">
+      <mxGeometry x="16" y="13" width="212" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="core" parent="1" vertex="1" value="Kiểm đầu vào và phạm vi. Tra dữ liệu khu vui chơi rồi dùng model mock đề xuất mã điểm và khung giờ." style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=0;spacingTop=49;spacingLeft=16;spacingRight=16;fontSize=15;fontColor=#38306A;fillColor=#F2EEFD;strokeColor=#A297D5;strokeWidth=1.5;">
+      <mxGeometry x="344" y="158" width="244" height="176" as="geometry" />
+    </mxCell>
+    <mxCell id="core-title" parent="core" vertex="1" value="AI CORE" style="text;html=0;align=left;verticalAlign=middle;spacing=0;fontSize=16;fontStyle=1;fontColor=#38306A;">
+      <mxGeometry x="16" y="13" width="212" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="risk" parent="1" vertex="1" value="Python kiểm mã điểm, giờ mở cửa, giờ show, thời lượng, di chuyển, chồng giờ và điều kiện tham gia. Tính lại tổng tiền và so với ngân sách." style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=0;spacingTop=49;spacingLeft=16;spacingRight=16;fontSize=15;fontColor=#633E12;fillColor=#FFF5DF;strokeColor=#D0A851;strokeWidth=1.5;">
+      <mxGeometry x="636" y="158" width="244" height="176" as="geometry" />
+    </mxCell>
+    <mxCell id="risk-title" parent="risk" vertex="1" value="CHẶN RỦI RO" style="text;html=0;align=left;verticalAlign=middle;spacing=0;fontSize=16;fontStyle=1;fontColor=#633E12;">
+      <mxGeometry x="16" y="13" width="212" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="output" parent="1" vertex="1" value="Lịch đã kiểm theo từng khung giờ, thời gian di chuyển và lý do chọn. Tổng tiền và chi phí mỗi người." style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=0;spacingTop=49;spacingLeft=16;spacingRight=16;fontSize=15;fontColor=#1A5140;fillColor=#EAF7F0;strokeColor=#7EB7A4;strokeWidth=1.5;">
+      <mxGeometry x="928" y="158" width="244" height="176" as="geometry" />
+    </mxCell>
+    <mxCell id="output-title" parent="output" vertex="1" value="OUTPUT" style="text;html=0;align=left;verticalAlign=middle;spacing=0;fontSize=16;fontStyle=1;fontColor=#1A5140;">
+      <mxGeometry x="16" y="13" width="212" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="data" parent="1" vertex="1" value="Mã điểm, giờ mở cửa và giờ show, thời lượng, giá vé, thời gian di chuyển và điều kiện tham gia." style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=0;spacingTop=49;spacingLeft=16;spacingRight=16;fontSize=14;fontColor=#31425C;fillColor=#F5F7FB;strokeColor=#B0BDCF;">
+      <mxGeometry x="344" y="420" width="244" height="147" as="geometry" />
+    </mxCell>
+    <mxCell id="data-title" parent="data" vertex="1" value="Dữ liệu giả lập trong repo" style="text;html=0;align=left;verticalAlign=middle;spacing=0;fontSize=15;fontStyle=1;fontColor=#31425C;">
+      <mxGeometry x="16" y="13" width="212" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="fallback" parent="1" vertex="1" value="Thiếu thông tin → hỏi lại. Thiếu căn cứ hoặc lịch sai → báo lý do và gợi ý sửa. Ngoài phạm vi → từ chối." style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=0;spacingTop=49;spacingLeft=16;spacingRight=16;fontSize=14;fontColor=#633E12;fillColor=#FFFAEE;strokeColor=#D0A851;">
+      <mxGeometry x="636" y="420" width="244" height="147" as="geometry" />
+    </mxCell>
+    <mxCell id="fallback-title" parent="fallback" vertex="1" value="Khi chưa xếp được lịch" style="text;html=0;align=left;verticalAlign=middle;spacing=0;fontSize=15;fontStyle=1;fontColor=#633E12;">
+      <mxGeometry x="16" y="13" width="212" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="review" parent="1" vertex="1" value="Chọn lịch hoặc sửa đầu vào để xếp lại. Người dùng tự quyết định đặt vé và thanh toán." style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=0;spacingTop=49;spacingLeft=16;spacingRight=16;fontSize=14;fontColor=#1A5140;fillColor=#F5FAF7;strokeColor=#7EB7A4;">
+      <mxGeometry x="928" y="420" width="244" height="147" as="geometry" />
+    </mxCell>
+    <mxCell id="review-title" parent="review" vertex="1" value="Trưởng nhóm quyết định" style="text;html=0;align=left;verticalAlign=middle;spacing=0;fontSize=15;fontStyle=1;fontColor=#1A5140;">
+      <mxGeometry x="16" y="13" width="212" height="26" as="geometry" />
+    </mxCell>
+    <mxCell id="footer" parent="1" vertex="1" value="CP2 dùng model mock và dữ liệu minh họa của một khu vui chơi." style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;fontColor=#425571;fontSize=14;">
+      <mxGeometry x="52" y="600" width="1120" height="28" as="geometry" />
+    </mxCell>
+    <mxCell id="input-core" parent="1" edge="1" source="input" target="core" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#526887;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="core-risk" parent="1" edge="1" source="core" target="risk" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#526887;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="risk-output" parent="1" edge="1" source="risk" target="output" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#326B58;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="data-core" parent="1" edge="1" source="data" target="core" value="Tra cứu" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;strokeWidth=1.5;strokeColor=#526887;fontColor=#31425C;fontSize=13;labelBackgroundColor=#FFFFFF;endArrow=block;endFill=1;exitX=0.5;exitY=0;entryX=0.5;entryY=1;">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="risk-fallback" parent="1" edge="1" source="risk" target="fallback" value="Cần xử lý" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=1.5;strokeColor=#947023;fontColor=#633E12;fontSize=13;labelBackgroundColor=#FFFFFF;endArrow=block;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="output-review" parent="1" edge="1" source="output" target="review" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=1.5;strokeColor=#326B58;endArrow=block;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel>
