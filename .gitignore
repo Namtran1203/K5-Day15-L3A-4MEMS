@@ -35,5 +35,3 @@ evidence/**/raw-*
 # Nguyên file data BTC cấp (data/preclass, data/training-ops… của repo đề): để ở đây, không commit
 data-btc
 data-btc/
-# Dữ liệu review thô (tự tải, chỉ commit số tổng hợp và ví dụ rút gọn)
-data/DisneylandReviews.csv/

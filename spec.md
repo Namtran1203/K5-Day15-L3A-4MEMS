@@ -87,7 +87,22 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): __
 - Ai có thể bị hại nếu AI sai, và nhóm chặn thế nào:
 
 ## §10. Phân công & changelog
-- Phân công có tên (theo chặng, chia cặp — guide "Cách chia việc"): __
+- **Hướng dự kiến** — C1, xếp lịch một ngày tại một khu vui chơi cho gia đình có trẻ nhỏ. AI chọn điểm và thứ tự theo độ tuổi, sở thích, khung giờ và ngân sách. Python kiểm giờ mở cửa, thời gian di chuyển, chồng giờ và tổng tiền. Đầu ra là lịch theo giờ kèm tổng tiền hoặc lý do chưa xếp được. Nhóm dùng bằng chứng người dùng để chốt hướng ở CP2.
+
+| Người phụ trách | Đầu việc và nơi bàn giao |
+|---|---|
+| Trần Thành Nam | Chốt lát cắt, thiết kế luồng và hành vi khi thiếu dữ liệu trong `spec.md` §3–§6 và §9. Tổng hợp hồ sơ, nộp checkpoint, điều phối slide, demo và video dự phòng. |
+| Bùi Hữu Phúc | Dựng dữ liệu của một khu vui chơi giả lập, ghi nguồn và phiên bản trong `data/DATA_CARD.md`. Xây công cụ tra điểm, lịch, giá và kiểm ràng buộc bằng Python. Tích hợp luồng trong `codebase/agent.py` và nối model cho CP3. |
+| Nguyễn Hà Anh | Tìm review công khai và hỏi người từng đi khu vui chơi cùng trẻ nhỏ. Ghi bằng chứng và nguồn trong `evidence/`, hoàn thiện `spec.md` §0–§2. Từ bằng chứng, lập persona, chạy mô phỏng và báo cáo chi phí so với impact trong `cost/` và `spec.md` §8. |
+| Nguyễn Xuân Hùng | Viết câu thử và metric trong `eval/`, đề xuất chuẩn đạt với Nam trước CP2. Chạy và chấm hai lượt, phân tích lỗi và tổng hợp kết quả trong `eval/report.md` và `spec.md` §7. |
+
+| Mốc | Chia cặp và bàn giao |
+|---|---|
+| CP1 · 17:00 ngày 27/11 | Nam và Hà Anh điền canvas với giả thuyết pain và nguồn cần kiểm. Phúc và Hùng thống nhất dữ liệu tối thiểu và ba ca đầu: lịch hợp lệ, thiếu cơ cấu người lớn/trẻ em, ngân sách quá thấp. |
+| CP2 · 19:30 ngày 27/11 | Nam và Phúc chốt phạm vi C1 theo bằng chứng và chạy demo với dữ liệu giả lập. Hà Anh đưa tình huống thực tế cho Hùng để hoàn thành ít nhất 10 câu thử và 3 metric. Nam và Hùng chốt chuẩn đạt trước giờ nộp. |
+| CP3 · 10:00 ngày 28/11 | Phúc và Hùng nối model, chạy và chấm lượt 1 trên 20–30 câu. Hà Anh hoàn thành bằng chứng, impact và mô phỏng thử 10 phiên. Nam ráp hồ sơ §0–§7 và nộp. |
+| CP4 · 14:30 ngày 28/11 | Phúc và Hùng chọn một nhóm lỗi để cải tiến, chạy và chấm lượt 2 trên cùng bộ câu thử. Hà Anh lấy tỉ lệ đạt lượt 2 để báo cáo chi phí từ ít nhất 50 phiên. Nam và Hà Anh ráp slide, tập demo ca thường và ca khó, chuẩn bị video dự phòng. Mỗi thành viên trình bày phần mình phụ trách. |
+
 - Dùng AI vào việc gì (2–3 dòng; chi tiết `docs/ai-usage.md`):
 - Nhật ký thay đổi — **mọi thay đổi sau CP2 19:30 Thứ Sáu 27/11 phải có dòng ở đây**:
 
