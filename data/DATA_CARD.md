@@ -2,14 +2,13 @@
 
 | Mục | Nội dung |
 |---|---|
-| Dataset | `park.json`, phiên bản 1.1, tạo ngày 27/11/2026; bổ sung nhãn sở thích. |
-| Mục đích | Dữ liệu cho bản thử xếp lịch một ngày của gia đình. |
-| Nguồn và cách tạo | Dữ liệu synthetic do AI tạo thủ công, không lấy từ khu vui chơi có thật; không sử dụng seed. |
-| Quy mô | 3 hoạt động, 1 bảng giá vé và thời gian di chuyển giả định. |
-| Xử lý | Viết trực tiếp dữ liệu có cấu trúc; không thu thập dữ liệu cá nhân. |
-| Kiểm tra | Chưa có người trong nhóm xác nhận; số bản ghi được thành viên kiểm tra thủ công: 0. |
-| Giới hạn | Giờ, giá, tuổi và thời gian di chuyển đều giả định; không dùng để lập lịch thực tế hay làm bằng chứng về nhu cầu người dùng. |
+| Dataset | `park.json`, phiên bản 2.0; cập nhật theo canvas Track C1. |
+| Mục đích | Thử lập lịch cho nhóm bạn trẻ một ngày, không đặt vé. |
+| Nguồn | Dữ liệu synthetic do AI tạo cho bản thử, không phản ánh địa điểm thực tế; không dùng seed. |
+| Quy mô | Một khu, 5 hoạt động gồm 2 sự kiện giờ cố định, giá và thời gian di chuyển giả định. |
+| Kiểm tra | Chưa được thành viên nhóm xác nhận; số bản ghi đã kiểm tra thủ công: 0. |
+| Giới hạn | Không có thời tiết thực tế, thông tin chiều cao hay thời gian chờ; không phải bằng chứng nhu cầu và không dùng để lên kế hoạch thực tế. |
 
-Giá tính bằng đồng Việt Nam, giá hoạt động tính cho mỗi người; thời gian di chuyển tính giữa các hoạt động.
+Mọi giá là đồng/người; thời gian di chuyển giữa các điểm là 15 phút. Thời tiết do người dùng cung cấp, không phải dự báo. Hoạt động mạnh được xem là không phù hợp khi nhóm khai có giới hạn cảm giác mạnh; lịch dành cho cả nhóm, không tách nhóm.
 
-Chế độ giả nhận JSON một dòng, ví dụ `{"adults":2,"children_ages":[5],"start":"09:00","end":"16:00","budget":500000,"interests":["động vật"]}`. Để nhận câu tự nhiên và đề xuất thứ tự bằng AI, cấu hình `MODEL_PROVIDER=openai`, `MODEL_NAME` và `API_KEY` trong `.env`; xem hướng dẫn trong `docs/connect-model.md`. Không đưa khoá vào repo. Chế độ giả chọn theo nhãn sở thích, không gọi AI và không dùng làm kết quả đánh giá model thật.
+Ví dụ đầu vào JSON một dòng ở chế độ giả: `{"people":4,"budget_per_person":600000,"start":"09:00","end":"18:00","interests":["show"],"avoid_intense":false,"weather":"khô"}`. Mưa dùng `"weather":"mưa"`; khi chưa biết ghi `"weather":"không rõ"`, hệ thống chỉ chọn điểm trong nhà. Model thật cần cấu hình theo `docs/connect-model.md`.
