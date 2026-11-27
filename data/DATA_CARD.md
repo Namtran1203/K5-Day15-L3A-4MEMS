@@ -1,23 +1,15 @@
-# Data card — dữ liệu bản chạy thử dùng
+# Data card — khu vui chơi giả lập
 
-> Điền ở guide bước 2.4 (bản đầu ở CP2, đủ ở CP3). Ôn lại: ngày 6 · lab ngày 6. Chấm ở rubric R4.
-> Một trang. Mỗi dataset một mục. Dữ liệu chạy thử (bài mẫu, thông báo mẫu, đoạn transcript…) để trong thư mục `data/` này.
-> Không commit nguyên tài liệu khoá, dữ liệu cá nhân thật hay nguyên file data BTC cấp — chỉ đoạn trích ngắn, bản viết lại, hoặc số đã tổng hợp.
-
-## Dataset 1 · [tên]
-
-| | |
+| Mục | Nội dung |
 |---|---|
-| Dùng để làm gì | nguồn cho công cụ `…` · bộ câu thử · đào bằng chứng |
-| Từ đâu | data BTC cấp (`…` trong repo đề) · tài liệu khoá (trích / viết lại) · nhóm tự viết · sinh có seed |
-| Xử lý những bước gì | lọc __ · làm sạch __ · ẩn danh __ · chia __ (script: `…`) |
-| Số dòng / số đoạn | __ |
-| Phiên bản / ngày lấy | __ |
-| Nhãn | thật · `synthetic` |
-| Giới hạn | thiếu gì, lệch về phía nào |
+| Dataset | `park.json`, phiên bản 1.1, tạo ngày 27/11/2026; bổ sung nhãn sở thích. |
+| Mục đích | Dữ liệu cho bản thử xếp lịch một ngày của gia đình. |
+| Nguồn và cách tạo | Dữ liệu synthetic do AI tạo thủ công, không lấy từ khu vui chơi có thật; không sử dụng seed. |
+| Quy mô | 3 hoạt động, 1 bảng giá vé và thời gian di chuyển giả định. |
+| Xử lý | Viết trực tiếp dữ liệu có cấu trúc; không thu thập dữ liệu cá nhân. |
+| Kiểm tra | Chưa có người trong nhóm xác nhận; số bản ghi được thành viên kiểm tra thủ công: 0. |
+| Giới hạn | Giờ, giá, tuổi và thời gian di chuyển đều giả định; không dùng để lập lịch thực tế hay làm bằng chứng về nhu cầu người dùng. |
 
-**Data `synthetic` (nhóm tự sinh):** ghi cách sinh (prompt / script), seed, người kiểm, số dòng đã kiểm tay. Data tự dựng **không phải bằng chứng pain**.
+Giá tính bằng đồng Việt Nam, giá hoạt động tính cho mỗi người; thời gian di chuyển tính giữa các hoạt động.
 
-## Dataset 2 · [tên]
-
-…
+Chế độ giả nhận JSON một dòng, ví dụ `{"adults":2,"children_ages":[5],"start":"09:00","end":"16:00","budget":500000,"interests":["động vật"]}`. Để nhận câu tự nhiên và đề xuất thứ tự bằng AI, cấu hình `MODEL_PROVIDER=openai`, `MODEL_NAME` và `API_KEY` trong `.env`; xem hướng dẫn trong `docs/connect-model.md`. Không đưa khoá vào repo. Chế độ giả chọn theo nhãn sở thích, không gọi AI và không dùng làm kết quả đánh giá model thật.

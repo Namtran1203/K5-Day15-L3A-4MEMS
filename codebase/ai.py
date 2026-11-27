@@ -18,6 +18,8 @@ Nối model thật: điền .env (chép từ .env.example), rồi viết nhánh 
 (có ví dụ OpenAI, Claude, model chạy trên máy, và cách nối nhà cung cấp khác). Không dán API key vào file này.
 """
 import os
+import json
+import urllib.request
 
 from tracing import model_call
 
@@ -49,8 +51,13 @@ def call_model(system: str, user: str) -> dict:
         last = (user.strip().splitlines() or [""])[-1]
         return {"text": "[câu trả lời giả — chưa nối model] " + last[:60], "model": "fake", "tokens_in": 0, "tokens_out": 0}
 
-    # NHÓM VIẾT: gọi model thật ở đây (theo MODEL_PROVIDER, MODEL_NAME, API_KEY) rồi trả đúng 4 khoá.
-    # Ví dụ chép được cho từng nhà cung cấp: docs/connect-model.md mục 2.
-    raise NotImplementedError(
-        "chưa viết phần gọi model thật cho MODEL_PROVIDER=%s trong codebase/ai.py — xem docs/connect-model.md"
-        % MODEL_PROVIDER)
+    if MODEL_PROVIDER != "openai":
+        raise ValueError("MODEL_PROVIDER chưa được hỗ trợ: %s (dùng fake hoặc openai)" % MODEL_PROVIDER)
+    if not MODEL_NAME or not API_KEY:
+        raise ValueError("Cần cấu hình MODEL_NAME và API_KEY trong .env")
+    body = {"model": MODEL_NAME, "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}], "response_format": {"type": "json_object"}}
+    req = urllib.request.Request("https://api.openai.com/v1/chat/completions", data=json.dumps(body).encode("utf-8"), headers={"Content-Type": "application/json", "Authorization": "Bearer " + API_KEY}, method="POST")
+    with urllib.request.urlopen(req, timeout=60) as response:
+        data = json.load(response)
+    usage = data["usage"]
+    return {"text": data["choices"][0]["message"]["content"], "model": data["model"], "tokens_in": usage["prompt_tokens"], "tokens_out": usage["completion_tokens"]}
