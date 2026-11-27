@@ -140,6 +140,16 @@ def call_provider(system, user):
 
 ## 3. Thử
 
+### Dùng OpenRouter
+
+Chép `.env.example` thành `.env`, giữ `MODEL_PROVIDER=openrouter` và
+`MODEL_NAME=upstage/solar-mini-4-5`, rồi điền `API_KEY` bằng khóa OpenRouter
+của nhóm. Model được cố định để các lượt đánh giá có thể đối chiếu; có thể
+đổi `MODEL_NAME` thành mã model khác hỗ trợ JSON trên OpenRouter. Lời gọi và
+số token được ghi theo model và `usage` thực tế do API trả về. Solar Mini 4.5
+Preview là model có phí; kiểm tra giá và hạn mức tài khoản trước khi chạy.
+Xem [trang model trên OpenRouter](https://openrouter.ai/upstage/solar-mini-4-5).
+
 1. `python run.py` → gõ 1 câu → thấy câu trả lời thật và dòng `(model: … · token vào … / ra …)`.
 2. `python run.py eval --try` → chạy 3 câu thử đầu, thấy "Nối model được" là xong.
 3. `python run.py eval` → `eval/run-1.csv` + `traces/run-1.jsonl`.

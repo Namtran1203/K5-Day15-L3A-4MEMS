@@ -46,7 +46,7 @@ Dữ liệu khu vui chơi giả lập v2.0 gồm 5 hoạt động, trong đó 2 
 
 | Lượt | Run ID | Model | Cấu hình (prompt / công cụ / thay đổi) | Đạt / tổng | % | Đạt chuẩn? |
 |---|---|---|---|---|---|---|
-| 1 | | | | __/__ | | |
+| 1 | run-1@20261128-054303 | upstage/solar-mini-4-5 | OpenRouter; prompt và công cụ hiện tại | Chưa chấm / 20 | Chưa chấm | Chưa xác định |
 | 2 | | | | __/__ | | |
 
 Lượt chạy lại vì lỗi kỹ thuật, lượt sau CP4: ghi thêm dòng, không sửa dòng cũ.
