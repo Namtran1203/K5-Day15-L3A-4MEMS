@@ -1,4 +1,4 @@
-# AI SPEC — Lập lịch một ngày ở khu vui chơi · Nhóm K5-L3A-4MEMS · Phòng [XXX] · Zone [X]
+# AI SPEC — Lập lịch một ngày ở khu vui chơi · Nhóm K5-L3A-4MEMS · Phòng 209 · Zone 6
 
 > Mốc nộp: §7 chốt chuẩn "đạt" tại **CP2 19:30 Thứ Sáu 27/11** · §0–§7 nộp **CP3 10:00 Thứ Bảy 28/11** · đủ §0–§10 **CP4 14:30 Thứ Bảy 28/11** · §10 changelog ghi tiếp đến **23:59 Thứ Bảy 28/11**.
 > Đầu mỗi mục ghi bước guide (`02-guide.md` trong repo đề) chỉ cách điền. Mỗi mục ngắn, có số và nguồn; chi tiết để ở file được trỏ tới. Xoá dòng hướng dẫn trong ngoặc vuông khi điền xong.
@@ -19,27 +19,33 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): Không có
 - **Việc họ cố làm xong:** Lập và điều chỉnh lịch trình 1 ngày tại khu vui chơi phù hợp khung giờ, ngân sách/người và sở thích khác nhau của cả nhóm.
 - **Hôm nay họ giải bằng gì, hỏng ở đâu, vì sao chưa bỏ:** Dùng bài review mạng xã hội + trang thông tin khu vui chơi + ghi chú/chat nhóm. Hỏng ở chỗ thông tin giờ show, trò bảo trì, giá phụ thu rời rạc nên tự cộng dễ sai, chồng giờ và lúng túng khi trời mưa; chưa bỏ được vì không có công cụ nào gom ràng buộc của cả nhóm vào một lần xếp lịch.
 - **Pain (KHÔNG chữ AI):** Trưởng nhóm bạn trẻ đi khu vui chơi 1 ngày phải tự tra tay hàng chục điểm chơi, khung giờ show, giá vé phụ thu và cân bằng sở thích khác nhau trong nhóm rồi tự xoay xở khi trời mưa hoặc trò đóng cửa, khiến họ mất nhiều thời gian chuẩn bị, dễ lỡ show, di chuyển vòng vèo hoặc vượt ngân sách dự kiến.
-- **Bằng chứng ban đầu CP2 (chi tiết: `evidence/data-mining.md`, tổng hợp hoàn chỉnh ở `evidence/summary.md` trước CP3):**
-  - Đào data công khai `DisneylandReviews.csv` (42.656 review TripAdvisor): **1.223/42.656 review (2,9%)** khớp nhóm từ khóa về giờ hoạt động, lỡ show hoặc trò đóng cửa; mẫu ngẫu nhiên 200 review (`seed 42`) có **9/200 (4,5%)**.
-  - Trích dẫn đầu: *“Quite a few of the other attractions in Fantasyland were shut down during our visit.”* — Review ID `317045022`.
-  - **Kết luận tạm thời CP2:** Đã có tín hiệu thực tế từ review công khai; nhóm đang tiếp tục kiểm chứng chéo bằng phỏng vấn ≥3 bạn trẻ và/hoặc khảo sát ≥20 người tại Việt Nam để chốt số chính trước CP3.
+- **Bằng chứng pain (chi tiết: `evidence/summary.md`, `evidence/data-mining.md`):**
+  - Nguồn đạt ngưỡng — đào data `DisneylandReviews.csv` (Kaggle/TripAdvisor, 42.656 review, `evidence/count.py`, `seed = 42`): **11.302/42.656 review (26,5%)** nhắc ≥1 nhóm pain liên quan đến lập lịch 1 ngày tại khu vui chơi; trong tập 1–3★ tỉ lệ tăng lên **3.335/8.735 (38,2%)**; mẫu ngẫu nhiên `seed = 42` đạt **52/200 (26,0%)**.
+  - Phân rã 5 nhóm pain toàn tập: `planning_navigation` **13,3%** (`5.685/42.656`) · `queue_crowd` **11,6%** (`4.928/42.656`) · `cost_budget` **4,1%** (`1.749/42.656`) · `schedule_show_hours` **2,9%** (`1.223/42.656`) · `weather_restrictions` **0,7%** (`295/42.656`).
+  - Đã trích **7 ví dụ nguyên văn** (≤2 câu/review, bỏ tên, kèm `Review_ID` như `622355993`, `162747517`, `407358325`, `320181041`, `317045022`, `264996033`, `637971019`).
+  - **Kết luận CP3:** Giả thuyết đạt ngưỡng dữ liệu công khai (26,5% > 20%). Giới hạn: đây là review Disneyland nước ngoài (2010–2019), nhóm chưa hoàn tất phỏng vấn/khảo sát kiểm chứng chéo tại Việt Nam tại mốc CP3.
 
 ## §2. Impact & quyết định chọn *(guide 1.3)*
 
 | Hướng | Bao nhiêu người gặp | Bao nhiêu lần / tháng | Mỗi lần tốn gì | Impact / tháng | Làm kịp không | Chọn? |
 |---|---|---|---|---|---|---|
-| **C1 · Lập lịch 1 ngày ở khu vui chơi** | ~300.000 lượt khách/tháng tại 1 khu vui chơi lớn *(tự ước tính; sẽ gắn link báo cáo công khai trước CP3)* · nhóm bạn trẻ/gia đình tự lập lịch | 1–2 lần / chuyến đi *(tự ước tính, kiểm lại bằng khảo sát CP3)* | ~45–60 phút tự tra lịch + rủi ro lỡ show / mất 1–2 giờ trải nghiệm *(tự ước tính)* | Cao & gặp lặp lại theo từng chuyến đi | Có (tool chỉ đọc, dễ kiểm bằng code) | **Chọn** |
-| **C2 · Lễ tân đề xuất đổi / nâng hạng phòng** | Lễ tân tại các khách sạn cỡ vừa–lớn *(tự ước tính)* | 10–30 ca / tuần / khách sạn *(tự ước tính)* | 10–15 phút tra phòng, chính sách, tính phí chênh *(tự ước tính)* | Cao theo ca trực | Khó (khó hẹn lễ tân thật phỏng vấn & test trong 10 giờ) | Loại |
-| **C3 · Hỗ trợ khách bị hủy chuyến bay** | Hành khách bị hủy/đổi chuyến bay *(tự ước tính)* | 1–2 lần / năm / hành khách *(tự ước tính)* | 30–90 phút xử lý, rủi ro mất lần đổi miễn phí hoặc chờ hoàn tiền tới 90 ngày (nguồn: Traveloka Help) | Cao mỗi ca sự cố | Trung bình (ít người quen bị hủy chuyến trong 1 tháng qua để phỏng vấn) | Loại |
+| **C1 · Lập lịch 1 ngày ở khu vui chơi** | ~43.590 trưởng nhóm gặp pain/tháng tại 1 khu vui chơi cỡ lớn *(quy đổi từ 7,9 triệu lượt/năm ≈ 658.000 lượt/tháng của Hong Kong Disneyland theo TEA/AECOM 2024 ÷ 4 người/nhóm × 26,5% tỉ lệ pain từ `DisneylandReviews.csv`)*; phạm vi sản phẩm cơ sở nhắm **10.000 trưởng nhóm/tháng** *(tự ước tính)* | 1 chuyến / tháng / trưởng nhóm hoạt động *(tự ước tính)* | 45 phút tự tra cứu, gom ý kiến & xoay xở lịch *(tự ước tính)* ≈ 22.500đ/chuyến (quy đổi 30.000đ/giờ) + rủi ro lỡ show/trò đóng cửa | **450.000 phút/tháng (7.500 giờ/tháng ≈ 225 triệu đ/tháng)** trên tập cơ sở 10.000 trưởng nhóm | Có (tool chỉ đọc, dễ kiểm ràng buộc cứng bằng code) | **Chọn** |
+| **C2 · Lễ tân đề xuất đổi / nâng hạng phòng** | ~100–200 lễ tân tại 1 chuỗi khách sạn cỡ vừa *(tự ước tính)* | ~60 ca / tháng / lễ tân *(tự ước tính)* | 10–15 phút tra phòng trống, chính sách & tính phí chênh *(tự ước tính)* | ~1.500–3.000 giờ/tháng *(tự ước tính)* | Khó (không có sẵn lễ tân thật để phỏng vấn & dùng thử trong 2 ngày) | Loại |
+| **C3 · Hỗ trợ khách bị hủy chuyến bay** | Hành khách bị hủy/đổi chuyến trong tháng *(tự ước tính)* | ~1 lần / sự cố *(tự ước tính)* | 30–90 phút xử lý + rủi ro mất lần đổi miễn phí hoặc chờ hoàn tiền tới 90 ngày (nguồn: Traveloka Help) | Cao mỗi ca sự cố nhưng phân tán theo thời điểm bão/lễ | Trung bình (hành động đổi/hoàn khó đảo; ít người xung quanh bị hủy chuyến gần đây) | Loại |
 
-- **Impact / tháng (bản ước tính CP2 — sẽ cập nhật số có nguồn đầy đủ từ khảo sát & báo cáo công khai trước CP3):** `N` trưởng nhóm/tháng × `1` chuyến/tháng × `45–60` phút chuẩn bị & xoay xở *(tự ước tính; Hà Anh bổ sung nguồn từng thừa số trước CP3)*.
+- **Impact / tháng của hướng chọn (kịch bản cơ sở tại 1 khu vui chơi cỡ lớn):**
+  `10.000 trưởng nhóm/tháng × 1 chuyến/tháng × 45 phút/chuyến = 450.000 phút/tháng = 7.500 giờ/tháng` (tương đương **~225.000.000 VND/tháng**, hay **22.500 VND / trưởng nhóm / tháng** nếu quy đổi thời gian sinh viên 30.000 VND/giờ).
+  - *Nguồn từng thừa số:*
+    - Quy mô gốc 1 khu vui chơi cỡ lớn (~7,9 triệu lượt khách/năm ≈ 658.000 lượt/tháng): báo cáo **TEA/AECOM 2024** cho Hong Kong Disneyland (xem 27/11/2026);
+    - Tỉ lệ gặp pain lập lịch/xếp hàng/show/ngân sách (**26,5%**): đào data `DisneylandReviews.csv` (`11.302/42.656`, `evidence/data-mining.md`);
+    - Cỡ nhóm trung bình 4 người/nhóm, tập người dùng cơ sở 10.000 trưởng nhóm/tháng (~6% tổng số nhóm tại 1 công viên lớn), tần suất 1 chuyến/tháng, thời gian mất 45 phút/chuyến, giá trị thời gian 30.000 VND/giờ: *(tự ước tính — cần kiểm chứng lại qua phỏng vấn/khảo sát bạn trẻ Việt Nam)*.
 - **Hướng ĐÃ LOẠI + vì sao:**
-  - *C2 (Lễ tân đổi/nâng phòng):* Người dùng là lễ tân khách sạn, nhóm không có sẵn người quen làm lễ tân để phỏng vấn và cho dùng thử trong 2 ngày hackathon.
-  - *C3 (Chuyến bay bị hủy):* Tần suất người xung quanh gặp sự cố hủy chuyến trong 1 tháng gần nhất thấp hơn nhiều so với đi khu vui chơi, khó thu phỏng vấn trực tiếp đúng khung thời gian 1 tháng.
-- **Số lần / tháng của từng kiểu người dùng (dự kiến cho persona ở §8):**
-  - Khách dùng ít (xếp 1 lần trước ngày đi): 1–2 lượt/chuyến *(tự ước tính)*.
-  - Khách dùng vừa (sửa lịch vài lần theo ý nhóm): 3–5 lượt/chuyến *(tự ước tính)*.
-  - Khách dùng nhiều (ngày mưa / trò đóng cửa phải xếp lại giữa ngày): 6–10 lượt/chuyến *(tự ước tính)*.
+  - *C2 (Lễ tân đổi/nâng phòng):* Người dùng mục tiêu là lễ tân khách sạn; nhóm không có sẵn người quen làm nghề để phỏng vấn và kiểm thử thực tế trong 2 ngày hackathon.
+  - *C3 (Chuyến bay bị hủy):* Xác suất người quen xung quanh bị hủy chuyến trong 1 tháng gần nhất thấp hơn đi khu vui chơi, đồng thời rủi ro hành động không đảo ngược (đổi/hoàn vé) đòi hỏi nhiều thời gian kiểm thử hơn.
+- **Số lần dùng / tháng của từng kiểu người dùng (đưa sang `cost/personas.yaml` ở §8):**
+  - `dung_it` (50%): 1 phiên/tháng, 1 lượt hỏi/phiên (xếp lịch 1 lần trước ngày đi) *(tự ước tính)*.
+  - `dung_vua` (35%): 1 phiên/tháng, 3 lượt hỏi/phiên (sửa lịch 2–3 lần theo ý kiến cả nhóm) *(tự ước tính)*.
+  - `dung_nhieu` (15%): 1 phiên/tháng, 5 lượt hỏi/phiên (gặp mưa / trò đóng bảo trì phải xếp lại giữa ngày nhiều lần) *(tự ước tính)*.
 
 ## §3. Giải pháp tương tự *(guide 2.1)*
 - **Disney Genie trong My Disney Experience** gợi ý lịch và hoạt động theo sở thích của nhóm, rồi gom kế hoạch trong mục My Plans. [Disney Genie — Walt Disney World](https://disneyworld.disney.go.com/experience-updates/genie/)
