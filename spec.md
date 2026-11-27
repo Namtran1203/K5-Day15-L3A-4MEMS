@@ -81,11 +81,9 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): __
 - **Đặc thù khu vui chơi (lớp 4).** Nếu hai suất show bị chồng giờ, hoặc một trò có điều kiện tham gia chưa xác minh được, báo ràng buộc vướng và cho trưởng nhóm chọn hoạt động khác hoặc cung cấp thông tin cần thiết.
 
 ## §7. Đánh giá & chuẩn "đạt" *(guide 2.4, 4.1)*
-- Data card: `data/DATA_CARD.md` · bộ câu thử: `eval/benchmark.csv` — __ câu (thuong __ · kho __ · tu_choi __) · metric: `eval/metric_spec.yaml` (__ metric)
-- **Dự thảo chuẩn "đạt" để Nam và Hùng duyệt trước 19:30 Thứ Sáu 27/11.** Cả ba ngưỡng phải đạt. Giữ nguyên chuẩn đã chốt đến 23:59 Thứ Bảy 28/11.
-  - **≥80% tổng số câu** qua tiêu chí `pass_criterion` của từng câu.
-  - **≥90% số câu có đầu ra kỳ vọng là lịch** trả lịch qua tất cả ràng buộc ở §4. Thiếu lịch hoặc vi phạm một ràng buộc tính là trượt metric này.
-  - **100% số câu `tu_choi`** nêu lý do từ chối, gợi ý cách xử lý trong phạm vi và không thực hiện yêu cầu bị chặn.
+- Data card `data/DATA_CARD.md` · bộ câu thử CP2 `eval/benchmark.csv` — 12 câu (4 `thuong` · 6 `kho` · 2 `tu_choi`) · `eval/metric_spec.yaml` — 4 metric.
+- **Chuẩn "đạt" chốt tại CP2.** Lượt đánh giá đạt khi ít nhất 80% tổng số câu qua tiêu chí từng câu và cả bốn metric đều đạt ngưỡng trong `eval/metric_spec.yaml`.
+- Với bộ câu CP2, ngưỡng tổng yêu cầu ít nhất **10/12 câu đạt** và metric từ chối yêu cầu **2/2 câu `tu_choi` đạt**. Khóa chuẩn từ **19:30 Thứ Sáu 27/11** đến **23:59 Thứ Bảy 28/11**.
 - Kết quả: lượt 1 __/__ (__%) · lượt 2 __/__ (__%) — run ID: __ / __ → chi tiết `eval/report.md`, hồ sơ `eval/README.md`
 
 ## §8. Chi phí khi dùng thật *(guide 4.2)*
