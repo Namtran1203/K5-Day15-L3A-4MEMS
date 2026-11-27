@@ -1,23 +1,14 @@
-# Data card — dữ liệu bản chạy thử dùng
+# Data card — khu vui chơi giả lập
 
-> Điền ở guide bước 2.4 (bản đầu ở CP2, đủ ở CP3). Ôn lại: ngày 6 · lab ngày 6. Chấm ở rubric R4.
-> Một trang. Mỗi dataset một mục. Dữ liệu chạy thử (bài mẫu, thông báo mẫu, đoạn transcript…) để trong thư mục `data/` này.
-> Không commit nguyên tài liệu khoá, dữ liệu cá nhân thật hay nguyên file data BTC cấp — chỉ đoạn trích ngắn, bản viết lại, hoặc số đã tổng hợp.
-
-## Dataset 1 · [tên]
-
-| | |
+| Mục | Nội dung |
 |---|---|
-| Dùng để làm gì | nguồn cho công cụ `…` · bộ câu thử · đào bằng chứng |
-| Từ đâu | data BTC cấp (`…` trong repo đề) · tài liệu khoá (trích / viết lại) · nhóm tự viết · sinh có seed |
-| Xử lý những bước gì | lọc __ · làm sạch __ · ẩn danh __ · chia __ (script: `…`) |
-| Số dòng / số đoạn | __ |
-| Phiên bản / ngày lấy | __ |
-| Nhãn | thật · `synthetic` |
-| Giới hạn | thiếu gì, lệch về phía nào |
+| Dataset | `park.json`, phiên bản 2.0; cập nhật theo canvas Track C1. |
+| Mục đích | Thử lập lịch cho nhóm bạn trẻ một ngày, không đặt vé. |
+| Nguồn | Dữ liệu synthetic do AI tạo cho bản thử, không phản ánh địa điểm thực tế; không dùng seed. |
+| Quy mô | Một khu, 5 hoạt động gồm 2 sự kiện giờ cố định, giá và thời gian di chuyển giả định. |
+| Kiểm tra | Chưa được thành viên nhóm xác nhận; số bản ghi đã kiểm tra thủ công: 0. |
+| Giới hạn | Không có thời tiết thực tế, thông tin chiều cao hay thời gian chờ; không phải bằng chứng nhu cầu và không dùng để lên kế hoạch thực tế. |
 
-**Data `synthetic` (nhóm tự sinh):** ghi cách sinh (prompt / script), seed, người kiểm, số dòng đã kiểm tay. Data tự dựng **không phải bằng chứng pain**.
+Mọi giá là đồng/người; thời gian di chuyển giữa các điểm là 15 phút. Thời tiết do người dùng cung cấp, không phải dự báo. Hoạt động mạnh được xem là không phù hợp khi nhóm khai có giới hạn cảm giác mạnh; lịch dành cho cả nhóm, không tách nhóm.
 
-## Dataset 2 · [tên]
-
-…
+Ví dụ đầu vào JSON một dòng ở chế độ giả: `{"people":4,"budget_per_person":600000,"start":"09:00","end":"18:00","interests":["show"],"avoid_intense":false,"weather":"khô"}`. Mưa dùng `"weather":"mưa"`; khi chưa biết ghi `"weather":"không rõ"`, hệ thống chỉ chọn điểm trong nhà. Model thật cần cấu hình theo `docs/connect-model.md`.
