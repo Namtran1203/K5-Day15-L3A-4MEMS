@@ -9,10 +9,10 @@ Dữ liệu khu vui chơi giả lập v2.0 gồm 5 hoạt động, trong đó 2 
 
 ## 2. Bộ câu thử dựng ra sao
 
-- Bộ CP2 có 12 câu gồm 4 `thuong`, 6 `kho` và 2 `tu_choi` với yêu cầu đặt vé hoặc giả mạo quyền. [Benchmark](benchmark.csv)
-- `python run.py check` đếm 5 câu ghi nguồn `data_that` và 7 câu `tu_viet`. Tỷ lệ nguồn thật được ghi là 5/12 (41,7%).
-- Bộ câu phủ 5 yếu tố gồm số người, ngân sách, khung giờ, sở thích hoặc điều kiện tham gia và thời tiết.
-- Các lớp chỗ khó gồm nguồn sự thật (`C05`), thiếu thông tin (`C06`), ngoài phạm vi (`C11`, `C12`) và ràng buộc khu vui chơi (`C07`–`C10`).
+- Bộ CP2 có 12 câu (`C01`–`C12`); bộ CP3 mở rộng lên **20 câu** (`C01`–`C20`) gồm **7 `thuong`**, **11 `kho`** và **2 `tu_choi`** (2 ca tấn công yêu cầu đặt vé hoặc giả mạo quyền). [Benchmark](benchmark.csv)
+- `python run.py check` đếm **9 câu** ghi nguồn `data_that` (từ `DisneylandReviews.csv`, gắn `Review_ID`) và **11 câu** `tu_viet`. Tỷ lệ nguồn thật đạt **9/20 (45,0%)** ≥ ngưỡng 1/3.
+- Bộ câu phủ 5 yếu tố gồm số người, ngân sách/người, khung giờ, sở thích hoặc giới hạn cảm giác mạnh và thời tiết.
+- Các lớp chỗ khó gồm nguồn sự thật (`C05`, `C13`, `C16`), thiếu thông tin (`C06`, `C18`), ngoài phạm vi/tấn công (`C11`, `C12`) và ràng buộc khu vui chơi (`C07`–`C10`, `C19`, `C20`).
 
 ## 3. Metric và cách chấm
 
@@ -46,11 +46,11 @@ Dữ liệu khu vui chơi giả lập v2.0 gồm 5 hoạt động, trong đó 2 
 
 | Lượt | Run ID | Model | Cấu hình (prompt / công cụ / thay đổi) | Đạt / tổng | % | Đạt chuẩn? |
 |---|---|---|---|---|---|---|
-| 1 | run-1@20261128-054303 | upstage/solar-mini-4-5 | OpenRouter; prompt và công cụ hiện tại | Chưa chấm / 20 | Chưa chấm | Chưa xác định |
+| 1 | run-1@20261128-054303 | upstage/solar-mini-4-5 | OpenRouter; prompt JSON + `make_schedule` (v2.0) | 8/20 | 40% | Chưa đạt |
 | 2 | | | | __/__ | | |
 
 Lượt chạy lại vì lỗi kỹ thuật, lượt sau CP4: ghi thêm dòng, không sửa dòng cũ.
 
 ## 6. Lỗi chính
 
-Tóm 2–3 dòng từ `eval/report.md`: nhóm lỗi lớn nhất · đã sửa gì · còn lại gì.
+Lượt 1 đạt **8/20 (40%)** (`thuong` 3/7, `kho` 4/11, `tu_choi` 1/2). Ba nhóm lỗi chính: (1) xử lý `weather`/thông tin thiếu chưa nhất quán (6 câu: `C01, C02, C04, C06, C09, C18`), (2) im lặng bỏ qua điểm không có trong dữ liệu hoặc yêu cầu bất khả thi (5 câu: `C03, C05, C07, C10, C16`), và (3) chưa từ chối yêu cầu giả mạo quyền quản lý (`C12`). Chi tiết: [Báo cáo đánh giá](report.md).
