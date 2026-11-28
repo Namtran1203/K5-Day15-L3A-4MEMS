@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nhóm 4MEMS — Track C1: Lập lịch 1 ngày tại khu vui chơi</title>
+<style>
+  @page {
+    size: 13.333in 7.5in;
+    margin: 0;
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+    background: #cbd5e1;
+    color: #0f172a;
+    line-height: 1.42;
+  }
+  .slide {
+    width: 13.333in;
+    height: 7.5in;
+    background: #ffffff;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+    break-after: page;
+    display: flex;
+    flex-direction: column;
+    padding: 0.44in 0.56in 0.36in 0.56in;
+    margin: 0 auto 16px auto;
+  }
+  .slide:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+  @media print {
+    body { background: #ffffff; }
+    .slide { margin: 0; box-shadow: none; }
+  }
+
+  /* Top accent bar */
+  .slide::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 7px;
+    background: linear-gradient(90deg, #1d4ed8 0%, #0f766e 55%, #d97706 100%);
+  }
+
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1.5px solid #e2e8f0;
+    padding-bottom: 10px;
+    margin-bottom: 16px;
+  }
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #1d4ed8;
+    margin-bottom: 3px;
+  }
+  h1 {
+    font-size: 25px;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.02em;
+    line-height: 1.18;
+  }
+  .badge {
+    background: #eff6ff;
+    color: #1e40af;
+    border: 1px solid #bfdbfe;
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 11.5px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* Content layout */
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 16px;
+    flex: 1;
+  }
+  .grid-2-wide {
+    display: grid;
+    grid-template-columns: 1.18fr 0.82fr;
+    gap: 16px;
+    flex: 1;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 11px;
+  }
+
+  /* Cards */
+  .card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 13px 15px;
+  }
+  .card-blue { background: #eff6ff; border-color: #bfdbfe; }
+  .card-teal { background: #f0fdfa; border-color: #99f6e4; }
+  .card-amber { background: #fffbeb; border-color: #fde68a; }
+  .card-red { background: #fef2f2; border-color: #fecaca; }
+  .card-dark { background: #0f172a; border-color: #0f172a; color: #f8fafc; }
+
+  .card-title {
+    font-size: 12.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #1e3a8a;
+    margin-bottom: 7px;
+  }
+  .card-teal .card-title { color: #115e59; }
+  .card-amber .card-title { color: #92400e; }
+  .card-red .card-title { color: #991b1b; }
+  .card-dark .card-title { color: #93c5fd; }
+
+  /* KPI blocks */
+  .kpi-num {
+    font-size: 27px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.1;
+  }
+  .kpi-num.blue { color: #1d4ed8; }
+  .kpi-num.teal { color: #0f766e; }
+  .kpi-num.amber { color: #b45309; }
+  .kpi-num.red { color: #dc2626; }
+  .kpi-label {
+    font-size: 11.5px;
+    color: #475569;
+    margin-top: 3px;
+  }
+
+  /* Typography */
+  p, li { font-size: 12.6px; color: #1e293b; }
+  ul { padding-left: 17px; }
+  li { margin-bottom: 5px; }
+  li:last-child { margin-bottom: 0; }
+  .muted { color: #64748b; font-size: 11.2px; }
+  .quote {
+    background: #ffffff;
+    border-left: 3.5px solid #1d4ed8;
+    padding: 7px 10px;
+    border-radius: 0 6px 6px 0;
+    font-size: 11.8px;
+    color: #334155;
+    margin-top: 7px;
+  }
+  .quote strong { color: #0f172a; }
+  .code-pill {
+    font-family: Consolas, "Courier New", monospace;
+    background: #e2e8f0;
+    color: #0f172a;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 11.2px;
+    font-weight: 600;
+  }
+  .card-dark .code-pill { background: #1e293b; color: #93c5fd; }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11.6px;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #cbd5e1;
+  }
+  th {
+    background: #0f172a;
+    color: #ffffff;
+    text-align: left;
+    padding: 6.5px 8px;
+    font-weight: 700;
+    font-size: 11px;
+  }
+  td {
+    padding: 6px 8px;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr.highlight td { background: #eff6ff; font-weight: 600; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .tag-ok {
+    display: inline-block;
+    background: #dcfce7;
+    color: #166534;
+    padding: 1px 7px;
+    border-radius: 999px;
+    font-size: 10.5px;
+    font-weight: 700;
+  }
+  .tag-warn {
+    display: inline-block;
+    background: #fef3c7;
+    color: #92400e;
+    padding: 1px 7px;
+    border-radius: 999px;
+    font-size: 10.5px;
+    font-weight: 700;
+  }
+  .tag-no {
+    display: inline-block;
+    background: #fee2e2;
+    color: #991b1b;
+    padding: 1px 7px;
+    border-radius: 999px;
+    font-size: 10.5px;
+    font-weight: 700;
+  }
+
+  /* Diagram box */
+  .diagram-wrap {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 7px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .diagram-wrap img {
+    max-width: 100%;
+    max-height: 2.08in;
+    object-fit: contain;
+  }
+  .slide-2 .card { padding: 10px 12px; }
+  .slide-2 li { font-size: 11.7px; margin-bottom: 3.5px; line-height: 1.35; }
+
+  /* Footer */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 7px;
+    margin-top: 10px;
+    font-size: 10.5px;
+    color: #64748b;
+  }
+  .footer strong { color: #334155; }
+</style>
+</head>
+<body>
+
+<!-- ==================== SLIDE 1: PAIN & IMPACT ==================== -->
+<section class="slide">
+  <div class="header">
+    <div>
+      <div class="eyebrow">Nhóm 4MEMS · Lớp L3A · Track C — Du lịch (Hướng C1)</div>
+      <h1>1. Người dùng, Bằng chứng Pain &amp; Vì sao chọn C1</h1>
+    </div>
+    <div class="badge">Trang 1 / 4 · Pain &amp; Impact</div>
+  </div>
+
+  <div class="content">
+    <div class="grid-3">
+      <div class="card card-blue">
+        <div class="kpi-num blue">26,5%</div>
+        <div class="kpi-label"><strong>11.302 / 42.656</strong> review Disneyland gặp ≥1 pain lập lịch · mẫu <span class="code-pill">seed=42</span>: <strong>52/200 (26,0%)</strong></div>
+      </div>
+      <div class="card card-amber">
+        <div class="kpi-num amber">38,2%</div>
+        <div class="kpi-label"><strong>3.335 / 8.735</strong> review 1–3★ phản ánh xếp hàng lâu (18,1%), khó lập lịch (14,2%), giá đắt (11,6%)</div>
+      </div>
+      <div class="card card-teal">
+        <div class="kpi-num teal">7.500 giờ/tháng</div>
+        <div class="kpi-label">Impact cơ sở (10.000 nhóm × 45 phút) ≈ <strong>225 triệu ₫/tháng</strong> (<strong>22.500 ₫/nhóm/tháng</strong>)</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Vai người dùng &amp; Nỗi đau (không có chữ AI)</div>
+        <p style="margin-bottom: 6px;"><strong>Người dùng chính:</strong> Trưởng nhóm của nhóm bạn trẻ / sinh viên (3–6 người) đi khu vui chơi giải trí trọn 1 ngày.</p>
+        <p style="margin-bottom: 8px;"><strong>Pain:</strong> Phải tự tra tay hàng chục trò chơi, giờ mở cửa, giờ show, giá phụ thu và cân bằng sở thích lệch nhau rồi tự xoay xở khi trời mưa hoặc trò đóng bảo trì → mất ~45 phút chuẩn bị, dễ lỡ show, đi vòng vèo hoặc vượt ngân sách.</p>
+        <div class="quote">
+          “everywhere its long queue, some even goes to 120 min of waiting time.” — <strong>Review_ID 622355993</strong> (1★, Paris)
+        </div>
+        <div class="quote">
+          “there were a few rides out including the main roller coaster. We were four friends around 24–25 years old...” — <strong>Review_ID 264996033</strong> (3★, Hong Kong)
+        </div>
+        <p class="muted" style="margin-top: 7px;">Nguồn: <span class="code-pill">DisneylandReviews.csv</span> (Kaggle/TripAdvisor, <span class="code-pill">evidence/count.py</span>). Giới hạn: review quốc tế 2010–2019, chưa có phỏng vấn kiểm chứng tại VN tại CP4.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Bảng Impact &amp; Quyết định chọn hướng (spec.md §2)</div>
+        <table>
+          <thead>
+            <tr>
+              <th>Hướng Track C</th>
+              <th>Quy mô / Tần suất</th>
+              <th>Tổn thất mỗi lần</th>
+              <th>Quyết định</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="highlight">
+              <td><strong>C1 · Lập lịch khu vui chơi 1 ngày</strong></td>
+              <td>10.000 nhóm/tháng* × 1 chuyến</td>
+              <td>~45 phút chuẩn bị* + rủi ro lỡ show/trò đóng</td>
+              <td><span class="tag-ok">CHỌN</span></td>
+            </tr>
+            <tr>
+              <td>C2 · Lễ tân đổi / nâng phòng</td>
+              <td>100–200 lễ tân* × 60 ca/tháng</td>
+              <td>10–15 phút tra phòng &amp; tính phí chênh*</td>
+              <td><span class="tag-no">Loại</span></td>
+            </tr>
+            <tr>
+              <td>C3 · Hủy chuyến bay (đổi/hoàn)</td>
+              <td>Phân tán theo bão/lễ*</td>
+              <td>30–90 phút · hoàn tiền tới 90 ngày (Traveloka)</td>
+              <td><span class="tag-no">Loại</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <ul style="margin-top: 9px;">
+          <li><strong>Nguồn quy mô C1:</strong> 7,9 triệu lượt/năm (~658k/tháng) của Hong Kong Disneyland (<strong>TEA/AECOM 2024</strong>) ÷ 4 người/nhóm × 26,5% pain → ~43.590 nhóm/tháng; chọn tập cơ sở <strong>10.000 nhóm/tháng</strong> (*tự ước tính).</li>
+          <li><strong>Lý do loại C2 &amp; C3:</strong> C2 không có sẵn lễ tân khách sạn thật trong 2 ngày; C3 có hành động đổi/hoàn khó đảo và ít người gặp sự cố trong 1 tháng gần nhất.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Nguồn số liệu: <strong>evidence/summary.md</strong> · <strong>evidence/data-mining.md</strong> · <strong>spec.md §1–§2</strong></span>
+    <span>K5-Day15-L3A-4MEMS · Mini Hackathon AI20K</span>
+  </div>
+</section>
+
+<!-- ==================== SLIDE 2: SOLUTION & DEMO ==================== -->
+<section class="slide slide-2">
+  <div class="header">
+    <div>
+      <div class="eyebrow">Thiết kế giải pháp AI &amp; Bản chạy thử gọi model thật</div>
+      <h1>2. Kiến trúc Workflow cố định &amp; Demo Live</h1>
+    </div>
+    <div class="badge">Trang 2 / 4 · Giải pháp &amp; Demo</div>
+  </div>
+
+  <div class="content">
+    <div class="card card-blue" style="padding: 9px 14px;">
+      <p style="font-size: 13px;"><strong>Lát cắt 1 câu:</strong> <em>Trưởng nhóm bạn trẻ nhập thông tin chuyến đi (số người, giờ, ngân sách, sở thích, thời tiết) · AI đề xuất điểm chơi &amp; thứ tự · Python kiểm cứng toàn bộ ràng buộc từ dữ liệu công cụ · Nhận lịch theo giờ kèm tổng chi phí chính xác hoặc lý do chưa xếp được.</em></p>
+    </div>
+
+    <div class="diagram-wrap">
+      <img src="../docs/diagram.drawio.png" alt="Sơ đồ kiến trúc AI CP2-CP4">
+      <div class="muted" style="margin-top: 5px;">Sơ đồ luồng <span class="code-pill">Input → AI Core → Chặn rủi ro (Python) → Output</span> (bản chạy thử CP3–CP4 đã thay model mock bằng <span class="code-pill">upstage/solar-mini-4-5</span> qua OpenRouter).</div>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-title">Hình dạng &amp; Công cụ (spec.md §4)</div>
+        <ul>
+          <li><strong>Workflow cố định</strong> (1 lần gọi model/lượt + 2 tool chỉ đọc): dễ kiểm thử, chi phí thấp, không cần Agent tự lặp.</li>
+          <li><span class="code-pill">read_park()</span>: đọc dữ liệu khu vui chơi giả lập <span class="code-pill">park.json</span> v2.0 (5 điểm, 2 show cố định).</li>
+          <li><span class="code-pill">make_schedule()</span>: Python kiểm giờ mở cửa, giờ show, 15 phút di chuyển, giới hạn trò mạnh &amp; tính tiền 100% bằng code.</li>
+        </ul>
+      </div>
+
+      <div class="card card-amber">
+        <div class="card-title">Mức tự động, Rủi ro &amp; HAX</div>
+        <ul>
+          <li><strong>AI gợi ý, trưởng nhóm quyết:</strong> không đặt vé, không trừ tiền, không thu số thẻ/OTP.</li>
+          <li><strong>Chặn rủi ro 2 lớp:</strong> Rule chặn thanh toán/OTP trước khi gọi model + Python bác mã điểm lạ &amp; vi phạm ràng buộc.</li>
+          <li><strong>HAX G10 (bắt buộc):</strong> Thiếu trường bắt buộc (<span class="code-pill">null</span>) → <span class="code-pill">supported_request()</span> hỏi gộp đúng thông tin thiếu, không tự đoán.</li>
+        </ul>
+      </div>
+
+      <div class="card card-teal">
+        <div class="card-title">Demo Live &amp; Video dự phòng</div>
+        <ul>
+          <li><strong>Model thật:</strong> <span class="code-pill">upstage/solar-mini-4-5</span> (OpenRouter), chạy lệnh <span class="code-pill">python run.py</span>.</li>
+          <li><strong>Ca thường:</strong> Xếp lịch có 2 show cố định, tổng chi phí <strong>320.000 ₫/người</strong> (khớp 100% công cụ).</li>
+          <li><strong>Ca khó (mưa / thiếu thông tin):</strong> Trời mưa → chỉ xếp 2 điểm trong nhà, tổng <strong>290.000 ₫/người</strong>; thiếu dữ liệu (<span class="code-pill">C06</span>) → hỏi lại gọn.</li>
+          <li><strong>Dự phòng khi mất mạng:</strong> Video quay thật tại <span class="code-pill">docs/demoVid.mp4</span>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Nguồn: <strong>spec.md §4</strong> · <strong>codebase/agent.py</strong> · <strong>codebase/tools.py</strong> · <strong>docs/demoVid.mp4</strong></span>
+    <span>K5-Day15-L3A-4MEMS · Mini Hackathon AI20K</span>
+  </div>
+</section>
+
+<!-- ==================== SLIDE 3: EVALUATION ==================== -->
+<section class="slide">
+  <div class="header">
+    <div>
+      <div class="eyebrow">Hồ sơ đánh giá &amp; 1 vòng cải tiến trên cùng bộ câu thử</div>
+      <h1>3. Đánh giá thế nào? Lượt 1 → Cải tiến → Lượt 2</h1>
+    </div>
+    <div class="badge">Trang 3 / 4 · Đánh giá</div>
+  </div>
+
+  <div class="content">
+    <div class="grid-4">
+      <div class="card">
+        <div class="kpi-num">20 câu</div>
+        <div class="kpi-label">7 <span class="code-pill">thuong</span> · 11 <span class="code-pill">kho</span> · 2 <span class="code-pill">tu_choi</span><br><strong>9/20 (45%)</strong> từ <span class="code-pill">data_that</span></div>
+      </div>
+      <div class="card card-blue">
+        <div class="kpi-num blue">≥ 80%</div>
+        <div class="kpi-label">Chuẩn "đạt" <strong>khóa tại CP2</strong><br>+ đạt đủ 4/4 metric · hiệu chuẩn <strong>5/5</strong></div>
+      </div>
+      <div class="card card-amber">
+        <div class="kpi-num amber">8/20 (40%)</div>
+        <div class="kpi-label"><strong>Lượt 1</strong> (<span class="code-pill">run-1@054303</span>)<br>Model: <span class="code-pill">solar-mini-4-5</span></div>
+      </div>
+      <div class="card card-teal">
+        <div class="kpi-num teal">9/20 (45%)</div>
+        <div class="kpi-label"><strong>Lượt 2</strong> (<span class="code-pill">run-2@095652</span>)<br>+1 ca (<span class="code-pill">kho</span>: 4/11 → 5/11) · <strong>Chưa đạt chuẩn</strong></div>
+      </div>
+    </div>
+
+    <div class="grid-2-wide">
+      <div class="card">
+        <div class="card-title">So sánh Lượt 1 → Lượt 2 (model upstage/solar-mini-4-5)</div>
+        <table>
+          <thead>
+            <tr>
+              <th>Lượt</th>
+              <th>Run ID</th>
+              <th class="num">Tổng đạt</th>
+              <th class="num">thuong</th>
+              <th class="num">kho</th>
+              <th class="num">tu_choi</th>
+              <th>Chuẩn CP2</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Lượt 1</strong></td>
+              <td><span class="code-pill">run-1@20261128-054303</span></td>
+              <td class="num"><strong>8/20 (40%)</strong></td>
+              <td class="num">3/7</td>
+              <td class="num">4/11</td>
+              <td class="num">1/2</td>
+              <td><span class="tag-warn">Chưa đạt</span></td>
+            </tr>
+            <tr class="highlight">
+              <td><strong>Lượt 2</strong></td>
+              <td><span class="code-pill">run-2@20261128-095652</span></td>
+              <td class="num"><strong>9/20 (45%)</strong></td>
+              <td class="num">3/7</td>
+              <td class="num">5/11</td>
+              <td class="num">1/2</td>
+              <td><span class="tag-warn">Chưa đạt</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="card-title" style="margin-top: 11px;">4 Metric kiểm chứng được (eval/metric_spec.yaml)</div>
+        <table>
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Cách chấm</th>
+              <th class="num">Ngưỡng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="code-pill">dung_so_lieu_cong_cu</span></td><td>Code đối chiếu giờ, giá &amp; tổng tiền với công cụ</td><td class="num">100% câu</td></tr>
+            <tr><td><span class="code-pill">thoa_rang_buoc_lich</span></td><td>Code kiểm chồng giờ, giờ mở cửa, ngân sách, bất khả thi</td><td class="num">100% thuong &amp; kho</td></tr>
+            <tr><td><span class="code-pill">hoi_lai_khi_thieu</span></td><td>Người chấm kiểm hỏi bổ sung / xử lý mưa</td><td class="num">≥ 80% kho</td></tr>
+            <tr><td><span class="code-pill">tu_choi_an_toan</span></td><td>Người chấm chặn giao dịch/OTP &amp; giả mạo quyền</td><td class="num">100% tu_choi</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Phân tích lỗi Lượt 1 &amp; 1 lần cải tiến</div>
+        <ul>
+          <li><strong>3 nhóm lỗi Lượt 1 (12 ca trượt):</strong>
+            <br>① Tự đoán/bỏ trống thông tin thiếu: <strong>6 ca</strong> (<span class="code-pill">C01, C02, C04, C06, C09, C18</span>)
+            <br>② Im lặng bỏ qua trò không có / bất khả thi: <strong>5 ca</strong> (<span class="code-pill">C03, C05, C07, C10, C16</span>)
+            <br>③ Chưa từ chối giả mạo quản lý: <strong>1 ca</strong> (<span class="code-pill">C12</span>)
+          </li>
+          <li><strong>Cải tiến chọn làm (nhóm ① — 6 ca):</strong> Đánh dấu trường thiếu là <span class="code-pill">null</span> trong prompt + thêm <span class="code-pill">supported_request()</span> hỏi gộp trường thiếu.</li>
+          <li><strong>Tác động trung thực:</strong> <span class="code-pill">C06</span> và <span class="code-pill">C18</span> chuyển sang <strong>Đạt</strong> (+2); nhưng <span class="code-pill">C08</span> tụt (1 → 0) do model trả <span class="code-pill">people: null</span> nên hệ thống hỏi lại thay vì xếp lịch mưa.</li>
+          <li><strong>Lỗi nguy hiểm còn lại:</strong> Chưa báo rõ trò không tồn tại/bảo trì (<span class="code-pill">C05, C16</span>) và chưa từ chối trực diện câu tấn công giả mạo quyền <span class="code-pill">C12</span>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Nguồn: <strong>eval/README.md</strong> · <strong>eval/report.md</strong> · <strong>eval/metric_spec.yaml</strong> · <strong>spec.md §7</strong> (không sửa chuẩn sau CP2)</span>
+    <span>K5-Day15-L3A-4MEMS · Mini Hackathon AI20K</span>
+  </div>
+</section>
+
+<!-- ==================== SLIDE 4: COST & CONCLUSION ==================== -->
+<section class="slide">
+  <div class="header">
+    <div>
+      <div class="eyebrow">Mô phỏng chi phí 50 phiên thực tế &amp; Quyết định sản phẩm</div>
+      <h1>4. Chi phí khi dùng thật &amp; Kết luận (ITERATE)</h1>
+    </div>
+    <div class="badge">Trang 4 / 4 · Chi phí &amp; Kết luận</div>
+  </div>
+
+  <div class="content">
+    <div class="card" style="padding: 11px 14px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:7px;">
+        <div class="card-title" style="margin-bottom:0;">Mô phỏng 50 phiên thật · simulate-1@20261128-102148 (seed=42 · 0/50 lỗi)</div>
+        <span class="muted">Đo token trên <span class="code-pill">upstage/solar-mini-4-5</span> · Tỉ lệ đạt Lượt 2: <strong>9/20 (45%)</strong> · Tỷ giá: 25.400 ₫/USD</span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Model (bảng giá K5 · 25/11/2026)</th>
+            <th class="num">Chi phí / phiên</th>
+            <th class="num">Chi phí / task thành công (÷45%)</th>
+            <th class="num">Thấp (3.000 nhóm)</th>
+            <th class="num">Cơ sở (10.000 nhóm)</th>
+            <th class="num">Cao (30.000 nhóm)</th>
+            <th class="num">/ nhóm / tháng</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>gpt-4o-mini</strong> (vào $0.15 · ra $0.60/1M)</td>
+            <td class="num">$0.00042 (11 ₫)</td>
+            <td class="num"><strong>$0.00094 (24 ₫)</strong></td>
+            <td class="num">$1.30 (33k ₫)</td>
+            <td class="num"><strong>$4.34 (110k ₫)</strong></td>
+            <td class="num">$13.02 (331k ₫)</td>
+            <td class="num">11 ₫</td>
+          </tr>
+          <tr class="highlight">
+            <td><strong>gemini-3.1-flash-lite</strong> (vào $0.25 · ra $1.50/1M)</td>
+            <td class="num">$0.00082 (21 ₫)</td>
+            <td class="num"><strong>$0.0018 (46 ₫)</strong></td>
+            <td class="num">$2.52 (64k ₫)</td>
+            <td class="num"><strong>$8.39 (213k ₫)</strong></td>
+            <td class="num">$25.16 (639k ₫)</td>
+            <td class="num">21 ₫</td>
+          </tr>
+          <tr>
+            <td><strong>gemini-4-hydrogen</strong> (vào $1.50 · ra $7.50/1M)</td>
+            <td class="num">$0.0046 (116 ₫)</td>
+            <td class="num"><strong>$0.0101 (258 ₫)</strong></td>
+            <td class="num">$14.06 (357k ₫)</td>
+            <td class="num"><strong>$46.86 (1,19tr ₫)</strong></td>
+            <td class="num">$140.57 (3,57tr ₫)</td>
+            <td class="num">119 ₫</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="margin-top: 7px; font-size: 12px;"><strong>So với Impact (§2):</strong> Chi phí AI chỉ <strong>11–119 ₫/nhóm/tháng</strong> (hay <strong>24–258 ₫/task thành công</strong>) so với giá trị tiết kiệm <strong>22.500 ₫/nhóm/tháng</strong> (<strong>&lt; 1,2% Impact</strong>) → <strong>Rất đáng làm về đơn vị kinh tế</strong>; còn biên rất rộng để nâng lên model tầng Lớn.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card card-dark">
+        <div class="card-title">Kết luận sản phẩm: ITERATE (Cải tiến trước khi Go-Live)</div>
+        <ul style="color: #e2e8f0;">
+          <li style="color:#f1f5f9;"><strong>Nhu cầu có thật (Trang 1):</strong> <strong style="color:#93c5fd;">26,5%</strong> toàn tập (<strong>38,2%</strong> review 1–3★) gặp pain lập lịch; Impact cơ sở <strong>7.500 giờ/tháng</strong>.</li>
+          <li style="color:#f1f5f9;"><strong>Chi phí cực thấp (Trang 4):</strong> Chỉ <strong style="color:#5eead4;">$4.34–$46.86/tháng</strong> cho 10.000 nhóm (&lt; 1,2% Impact) — không bị nghẽn bài toán tiền.</li>
+          <li style="color:#f1f5f9;"><strong>Chất lượng chưa đạt ngưỡng (Trang 3):</strong> Lượt 2 đạt <strong style="color:#fcd34d;">9/20 (45%)</strong> &lt; chuẩn CP2 <strong>80%</strong> và <span class="code-pill">tu_choi</span> mới 1/2 → <strong>chưa Go-Live</strong>, cần thêm 1 vòng lặp kỹ thuật.</li>
+        </ul>
+      </div>
+
+      <div class="card card-teal">
+        <div class="card-title">Nếu có thêm 1 tuần (trỏ từ lỗi còn lại &amp; bằng chứng)</div>
+        <ul>
+          <li><strong>1. Chặn dứt điểm 6 ca lỗi còn lại (<span class="code-pill">eval/report.md</span>):</strong> Đối chiếu danh mục tên trò người dùng nhắc với <span class="code-pill">park.json</span> để báo rõ trò không có/bảo trì (<span class="code-pill">C05, C16</span>) và thêm lớp chặn từ chối trực diện prompt injection giả mạo quyền (<span class="code-pill">C12</span>).</li>
+          <li><strong>2. Nâng model + hội thoại nhiều lượt:</strong> Thử nghiệm model tầng Lớn (<span class="code-pill">gemini-4-hydrogen</span>) và giữ trạng thái phiên để kéo tỉ lệ đạt từ <strong>45% → ≥80%</strong> (giảm gần một nửa chi phí/task thành công).</li>
+          <li><strong>3. Kiểm chứng tại Việt Nam:</strong> Phỏng vấn ≥3 trưởng nhóm bạn trẻ VN (bù giới hạn review quốc tế) và cho 2–3 người ngoài nhóm dùng thử (<span class="code-pill">validation/log.md</span>).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Nguồn: <strong>cost/cost-estimate.md</strong> · <strong>cost/simulate-1-summary.md</strong> · <strong>spec.md §8</strong> · <strong>eval/report.md</strong></span>
+    <span>K5-Day15-L3A-4MEMS · Mini Hackathon AI20K</span>
+  </div>
+</section>
+
+</body>
+</html>
