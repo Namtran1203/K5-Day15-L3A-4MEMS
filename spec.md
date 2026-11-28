@@ -116,10 +116,14 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): Không có
 - Kết quả: lượt 1 **8/20 (40%)** *(thuong 3/7 · kho 4/11 · tu_choi 1/2 — chưa đạt chuẩn)* · lượt 2 **9/20 (45%)** *(thuong 3/7 · kho 5/11 · tu_choi 1/2 — chưa đạt chuẩn)* — run ID: `run-1@20261128-054303` / `run-2@20261128-095652` → chi tiết `eval/report.md`, hồ sơ `eval/README.md`
 
 ## §8. Chi phí khi dùng thật *(guide 4.2)*
-- Persona + giá: `cost/personas.yaml` · lượt mô phỏng: `cost/simulate-__.csv` (__ phiên)
-- Chi phí / task thành công: __ (model __) · __ (model __)
-- Chi phí / tháng ở quy mô thật: thấp __ · cơ sở __ · cao __ → chi tiết `cost/cost-estimate.md`
-- So với impact / người / tháng (§2): đáng làm không, vì sao:
+- Persona + giá: `cost/personas.yaml` · lượt mô phỏng: `cost/simulate-1.csv` (`simulate-1@20261128-102148`, **50 phiên**, `seed = 42`, `0/50` lỗi; đo token trên `upstage/solar-mini-4-5`, tỉ lệ đạt Lượt 2 `9/20 = 45%` từ `run-2@20261128-095652`).
+- Chi phí / task thành công: **`$0.00094` (≈ 24 ₫)** (`gpt-4o-mini`) · **`$0.0018` (≈ 46 ₫)** (`gemini-3.1-flash-lite`) · **`$0.0101` (≈ 258 ₫)** (`gemini-4-hydrogen`).
+- Chi phí / tháng ở quy mô thật (`3.000 / 10.000 / 30.000` trưởng nhóm/tháng):
+  - `gpt-4o-mini`: thấp `$1.30` (≈ 33k ₫) · cơ sở **`$4.34` (≈ 110k ₫)** · cao `$13.02` (≈ 331k ₫)
+  - `gemini-3.1-flash-lite`: thấp `$2.52` (≈ 64k ₫) · cơ sở **`$8.39` (≈ 213k ₫)** · cao `$25.16` (≈ 639k ₫)
+  - `gemini-4-hydrogen`: thấp `$14.06` (≈ 357k ₫) · cơ sở **`$46.86` (≈ 1,19 triệu ₫)** · cao `$140.57` (≈ 3,57 triệu ₫)
+  → chi tiết `cost/cost-estimate.md`, `cost/simulate-1-summary.md`.
+- So với impact / người / tháng (§2): **Rất đáng làm về chi phí** — chi phí cơ sở chỉ `11–119 ₫/nhóm/tháng` (hay `24–258 ₫/task thành công`) so với giá trị tiết kiệm ước tính `22.500 ₫/nhóm/tháng` (< 1,2% Impact). Tuy nhiên vì Lượt 2 mới đạt 45% (< chuẩn 80%), nên **ITERATE** và hoàn toàn đủ biên chi phí để nâng lên model tầng Lớn nhằm ưu tiên chất lượng.
 
 ## §9. Rủi ro & an toàn
 - **Dữ liệu.** Thiết kế CP2 dùng dữ liệu khu vui chơi giả lập. Đầu vào chỉ cần thông tin tổng hợp của nhóm. Bỏ tên và thông tin liên hệ khỏi ví dụ từ người dùng hoặc review trước khi lưu. Khi nối API model, chỉ gửi các trường cần để lập lịch và dữ liệu điểm chơi. Họ tên, số điện thoại, vị trí chính xác, mã vé và thông tin thanh toán nằm ngoài dữ liệu thu thập.
@@ -177,6 +181,7 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): Không có
 | 28/11, trước CP3 | Thêm ảnh minh họa tra lịch show ở §0 và ghi kết quả ca demo gọi model thật ở §4. | Minh họa cách tra thông tin công khai và xác nhận luồng chạy thật cho video CP3. |
 | 28/11, trước lượt 2 | Kiểm thông tin người dùng đã nêu, hỏi gộp các trường còn thiếu trước khi xếp lịch. | Xử lý ca tự đoán người, thời tiết hoặc giới hạn trò chơi như `C06` và `C18`. [Chi tiết cải tiến](eval/report.md) |
 | 28/11 10:02 | Chạy và chấm Lượt 2 (`run-2@20261128-095652`, `upstage/solar-mini-4-5`) đạt `9/20` (`45%`), cập nhật `eval/report.md`, `eval/README.md` và §7 | Hoàn tất đo sau cải tiến cho CP4 (`C06`, `C18` chuyển sang đạt; ghi nhận `C08` tụt để bàn giao Hà Anh chạy mô phỏng chi phí) |
+| 28/11 10:25 | Chạy mô phỏng chi phí 50 phiên (`simulate-1@20261128-102148`, `0/50` lỗi) theo tỉ lệ đạt Lượt 2 `45%`, điền `cost/cost-estimate.md` và §8 | Hoàn tất hạng mục mô phỏng chi phí CP4 (`$0.00094–$0.0101`/task thành công; cơ sở 10.000 nhóm tốn `$4.34–$46.86`/tháng) |
 
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)** (sửa theo góp ý — không sửa chuẩn "đạt", câu thử, số bằng chứng, kết quả các lượt đã chạy)
 
