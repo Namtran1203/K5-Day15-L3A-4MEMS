@@ -187,4 +187,4 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): Không có
 
 | Thời điểm | Đổi gì | Vì sao |
 |---|---|---|
-|  |  |  |
+| 28/11 19:44 | Thêm reflection cá nhân `reflection/nguyen-xuan-hung.md` và bổ sung phần khai báo dùng AI của Hùng trong `README.md` | Hoàn thiện hồ sơ cá nhân theo hạn chót 23:59 Thứ Bảy 28/11 (không thay đổi chuẩn đạt, bộ câu thử, bằng chứng hay kết quả các lượt đã chạy) |

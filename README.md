@@ -88,7 +88,7 @@ Nhóm dùng stack khác (Node, Streamlit, notebook…): sửa hàm `run_app()` t
 
 ## Dùng AI vào việc gì
 
-Nam dùng ChatGPT để soạn nháp các mục trong spec, phân công và tạo sơ đồ draw.io. Nam phụ trách đối chiếu nguồn tham khảo, luồng demo và giới hạn dữ liệu. [Khai báo chi tiết](docs/ai-usage.md)
+Nam dùng ChatGPT để soạn nháp các mục trong spec, phân công và tạo sơ đồ draw.io; Nam phụ trách đối chiếu nguồn tham khảo, luồng demo và giới hạn dữ liệu. Hùng dùng coding agent (Antigravity) để viết script đào dữ liệu (`evidence/count.py`), công cụ kiểm tra `eval/view_check.py`, soạn khung câu thử/metric và hỗ trợ rà trace; Hùng tự kiểm lại bộ từ khoá, đối chiếu `Review_ID` thật và chấm `pass` từng câu ở cả 2 lượt. [Khai báo chi tiết](docs/ai-usage.md)
 
 ## File mẫu — điền ở bước nào
 
