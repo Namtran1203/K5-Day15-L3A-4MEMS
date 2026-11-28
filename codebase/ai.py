@@ -51,12 +51,14 @@ def call_model(system: str, user: str) -> dict:
         last = (user.strip().splitlines() or [""])[-1]
         return {"text": "[câu trả lời giả — chưa nối model] " + last[:60], "model": "fake", "tokens_in": 0, "tokens_out": 0}
 
-    if MODEL_PROVIDER != "openai":
-        raise ValueError("MODEL_PROVIDER chưa được hỗ trợ: %s (dùng fake hoặc openai)" % MODEL_PROVIDER)
+    urls = {"openai": "https://api.openai.com/v1/chat/completions",
+            "openrouter": "https://openrouter.ai/api/v1/chat/completions"}
+    if MODEL_PROVIDER not in urls:
+        raise ValueError("MODEL_PROVIDER chưa được hỗ trợ: %s (dùng fake, openai hoặc openrouter)" % MODEL_PROVIDER)
     if not MODEL_NAME or not API_KEY:
         raise ValueError("Cần cấu hình MODEL_NAME và API_KEY trong .env")
     body = {"model": MODEL_NAME, "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}], "response_format": {"type": "json_object"}}
-    req = urllib.request.Request("https://api.openai.com/v1/chat/completions", data=json.dumps(body).encode("utf-8"), headers={"Content-Type": "application/json", "Authorization": "Bearer " + API_KEY}, method="POST")
+    req = urllib.request.Request(urls[MODEL_PROVIDER], data=json.dumps(body).encode("utf-8"), headers={"Content-Type": "application/json", "Authorization": "Bearer " + API_KEY}, method="POST")
     with urllib.request.urlopen(req, timeout=60) as response:
         data = json.load(response)
     usage = data["usage"]
