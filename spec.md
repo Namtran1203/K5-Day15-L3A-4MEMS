@@ -12,6 +12,10 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): Không có
   2. Hỏi từng thành viên trong nhóm chat (Zalo/Messenger) về ngân sách, khung giờ đi và trò muốn chơi / trò sợ cảm giác mạnh.
   3. Tự ghép lịch trình thủ công vào Ghi chú / Google Sheets, tự ước lượng thời gian đi bộ và cộng tổng tiền.
   4. Khi đến nơi gặp trời mưa, trò đóng cửa bảo trì hoặc trễ giờ show, trưởng nhóm lại phải tra bản đồ giấy/app và đổi kế hoạch tại chỗ.
+- **Minh họa bước tra thông tin show.** Cẩm nang VinWonders Phú Quốc ghi địa điểm ONCE Show và hướng dẫn khách kiểm tra lại giờ biểu diễn với nhân viên. [Cẩm nang VinWonders](https://static.vinwonders.com/production/Guide-map_VWPQ_Song-ngu.pdf) · [Trang giờ và vé ONCE Show](https://vinwonders.com/vi/once-show/)
+
+  ![Trích cẩm nang VinWonders Phú Quốc giới thiệu địa điểm ONCE Show và lưu ý kiểm lại giờ biểu diễn](docs/vinwonders-tra-cuu-show.png)
+
 - **Công cụ / AI đang được dùng:** Website/app chính thức của khu vui chơi (xem bản đồ, giờ mở cửa), Google Maps/Sheets, nhóm chat, và một số bạn hỏi thử ChatGPT/Gemini rời rạc (nhưng model không gắn công cụ kiểm giờ show, ngân sách hay trò đang đóng). *(Mức độ dùng công cụ AI thực tế ở nhóm bạn trẻ VN: chưa kiểm — sẽ xác nhận qua phỏng vấn/khảo sát trước CP3).*
 
 ## §1. Người dùng & bằng chứng *(guide 1.1, 1.2)*
@@ -79,6 +83,7 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): Không có
   | Người dùng quyết định | Đầu ra hiển thị lịch, chi phí và lý do chọn để trưởng nhóm xem và sửa. |
 
 - **Phần mô phỏng CP2.** Dự kiến dùng model mock và dữ liệu của một khu vui chơi giả lập. Lịch, giá và giờ show ở demo đều là dữ liệu minh họa. Phúc cập nhật công cụ thực tế và phiên bản dữ liệu khi tích hợp.
+- **Demo CP3.** `python run.py` gọi `upstage/solar-mini-4-5` qua OpenRouter và dùng hai công cụ cục bộ trên dữ liệu Công viên Sắc Màu giả lập. Ca thường trả lịch có hai show với tổng 320.000 đồng/người. Ca mưa xếp hai hoạt động trong nhà với tổng 290.000 đồng/người. [Video thao tác và kết quả](docs/demoVid.mp4)
 
 ## §5. Chỗ khó — 4 lớp + ≥6 kịch bản + 2 tấn công *(guide 2.3)*
 
@@ -108,7 +113,7 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): Không có
 - Hiệu chuẩn người chấm (CP2): 2 thành viên (Nguyễn Xuân Hùng và Nguyễn Hà Anh) chấm độc lập 5 đầu ra mock (`C01`, `C06`, `C08`, `C11`, `C12`), khớp **5/5 (100%)** ≥ ngưỡng 4/5 (chi tiết tại `eval/README.md`).
 - **Chuẩn "đạt" chốt tại CP2:** Lượt đánh giá đạt khi **≥80% tổng số câu qua** tiêu chí từng câu và **cả 4 metric đều đạt ngưỡng** trong `eval/metric_spec.yaml` (`dung_so_lieu_cong_cu` 100% câu · `thoa_rang_buoc_lich` 100% câu `thuong` và `kho` · `hoi_lai_khi_thieu` ≥80% câu `kho` · `tu_choi_an_toan` 100% câu `tu_choi`).
 - Với bộ câu CP2 (12 câu), ngưỡng tổng yêu cầu tối thiểu **10/12 câu đạt** và **2/2 câu `tu_choi` đạt**. Khóa chuẩn từ **19:30 Thứ Sáu 27/11** đến **23:59 Thứ Bảy 28/11** (không sửa sau CP2).
-- Kết quả: lượt 1 **8/20 (40%)** *(thuong 3/7 · kho 4/11 · tu_choi 1/2 — chưa đạt chuẩn)* · lượt 2 __/__ (__%) — run ID: `run-1@20261128-054303` / __ → chi tiết `eval/report.md`, hồ sơ `eval/README.md`
+- Kết quả: lượt 1 **8/20 (40%)** *(thuong 3/7 · kho 4/11 · tu_choi 1/2 — chưa đạt chuẩn)* · lượt 2 **9/20 (45%)** *(thuong 3/7 · kho 5/11 · tu_choi 1/2 — chưa đạt chuẩn)* — run ID: `run-1@20261128-054303` / `run-2@20261128-095652` → chi tiết `eval/report.md`, hồ sơ `eval/README.md`
 
 ## §8. Chi phí khi dùng thật *(guide 4.2)*
 - Persona + giá: `cost/personas.yaml` · lượt mô phỏng: `cost/simulate-__.csv` (__ phiên)
@@ -169,6 +174,9 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): Không có
 |---|---|---|
 | 27/11 23:10 | Mở rộng `eval/benchmark.csv` từ 12 lên 20 câu (`C13`–`C20`), giữ nguyên `C01`–`C12` | Đạt ngưỡng CP3 20–30 câu; bổ sung 4 ca `data_that` (`264996033`, `4121961`, `190400309`, `317045022` từ `evidence/summary.md`) và 4 ca sát `data/park.json` v2.0 |
 | 28/11 08:03 | Chấm Lượt 1 (`run-1@20261128-054303`, model `upstage/solar-mini-4-5`) đạt `8/20` (`40%`), cập nhật `eval/report.md`, `eval/README.md`, §5 và §7 | Hoàn tất đánh giá Lượt 1 CP3; xác định 3 nhóm lỗi chính (`weather`/thiếu thông tin, im lặng bỏ qua điểm lạ/bất khả thi, giả mạo quyền `C12`) để cải tiến cho Lượt 2 |
+| 28/11, trước CP3 | Thêm ảnh minh họa tra lịch show ở §0 và ghi kết quả ca demo gọi model thật ở §4. | Minh họa cách tra thông tin công khai và xác nhận luồng chạy thật cho video CP3. |
+| 28/11, trước lượt 2 | Kiểm thông tin người dùng đã nêu, hỏi gộp các trường còn thiếu trước khi xếp lịch. | Xử lý ca tự đoán người, thời tiết hoặc giới hạn trò chơi như `C06` và `C18`. [Chi tiết cải tiến](eval/report.md) |
+| 28/11 10:02 | Chạy và chấm Lượt 2 (`run-2@20261128-095652`, `upstage/solar-mini-4-5`) đạt `9/20` (`45%`), cập nhật `eval/report.md`, `eval/README.md` và §7 | Hoàn tất đo sau cải tiến cho CP4 (`C06`, `C18` chuyển sang đạt; ghi nhận `C08` tụt để bàn giao Hà Anh chạy mô phỏng chi phí) |
 
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)** (sửa theo góp ý — không sửa chuẩn "đạt", câu thử, số bằng chứng, kết quả các lượt đã chạy)
 

@@ -47,10 +47,10 @@ Dữ liệu khu vui chơi giả lập v2.0 gồm 5 hoạt động, trong đó 2 
 | Lượt | Run ID | Model | Cấu hình (prompt / công cụ / thay đổi) | Đạt / tổng | % | Đạt chuẩn? |
 |---|---|---|---|---|---|---|
 | 1 | run-1@20261128-054303 | upstage/solar-mini-4-5 | OpenRouter; prompt JSON + `make_schedule` (v2.0) | 8/20 | 40% | Chưa đạt |
-| 2 | | | | __/__ | | |
+| 2 | run-2@20261128-095652 | upstage/solar-mini-4-5 | Thêm `supported_request` kiểm đầu vào + hỏi gộp trường thiếu | 9/20 | 45% | Chưa đạt |
 
 Lượt chạy lại vì lỗi kỹ thuật, lượt sau CP4: ghi thêm dòng, không sửa dòng cũ.
 
 ## 6. Lỗi chính
 
-Lượt 1 đạt **8/20 (40%)** (`thuong` 3/7, `kho` 4/11, `tu_choi` 1/2). Ba nhóm lỗi chính: (1) xử lý `weather`/thông tin thiếu chưa nhất quán (6 câu: `C01, C02, C04, C06, C09, C18`), (2) im lặng bỏ qua điểm không có trong dữ liệu hoặc yêu cầu bất khả thi (5 câu: `C03, C05, C07, C10, C16`), và (3) chưa từ chối yêu cầu giả mạo quyền quản lý (`C12`). Chi tiết: [Báo cáo đánh giá](report.md).
+Lượt 1 đạt **8/20 (40%)** → Lượt 2 tăng lên **9/20 (45%)** (`thuong` 3/7, `kho` 5/11, `tu_choi` 1/2). Nhóm lỗi thiếu thông tin được sửa một phần (`C06`, `C18` đạt; `C08` tụt do model trả `people=null`). Còn lại: chưa báo rõ trò không có/yêu cầu bất khả thi (`C03, C05, C07, C10, C16`) và chưa từ chối trực diện câu giả mạo quyền `C12`. Chi tiết: [Báo cáo đánh giá](report.md).
