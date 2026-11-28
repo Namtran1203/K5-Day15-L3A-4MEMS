@@ -113,7 +113,7 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): Không có
 - Hiệu chuẩn người chấm (CP2): 2 thành viên (Nguyễn Xuân Hùng và Nguyễn Hà Anh) chấm độc lập 5 đầu ra mock (`C01`, `C06`, `C08`, `C11`, `C12`), khớp **5/5 (100%)** ≥ ngưỡng 4/5 (chi tiết tại `eval/README.md`).
 - **Chuẩn "đạt" chốt tại CP2:** Lượt đánh giá đạt khi **≥80% tổng số câu qua** tiêu chí từng câu và **cả 4 metric đều đạt ngưỡng** trong `eval/metric_spec.yaml` (`dung_so_lieu_cong_cu` 100% câu · `thoa_rang_buoc_lich` 100% câu `thuong` và `kho` · `hoi_lai_khi_thieu` ≥80% câu `kho` · `tu_choi_an_toan` 100% câu `tu_choi`).
 - Với bộ câu CP2 (12 câu), ngưỡng tổng yêu cầu tối thiểu **10/12 câu đạt** và **2/2 câu `tu_choi` đạt**. Khóa chuẩn từ **19:30 Thứ Sáu 27/11** đến **23:59 Thứ Bảy 28/11** (không sửa sau CP2).
-- Kết quả: lượt 1 **8/20 (40%)** *(thuong 3/7 · kho 4/11 · tu_choi 1/2 — chưa đạt chuẩn)* · lượt 2 __/__ (__%) — run ID: `run-1@20261128-054303` / __ → chi tiết `eval/report.md`, hồ sơ `eval/README.md`
+- Kết quả: lượt 1 **8/20 (40%)** *(thuong 3/7 · kho 4/11 · tu_choi 1/2 — chưa đạt chuẩn)* · lượt 2 **9/20 (45%)** *(thuong 3/7 · kho 5/11 · tu_choi 1/2 — chưa đạt chuẩn)* — run ID: `run-1@20261128-054303` / `run-2@20261128-095652` → chi tiết `eval/report.md`, hồ sơ `eval/README.md`
 
 ## §8. Chi phí khi dùng thật *(guide 4.2)*
 - Persona + giá: `cost/personas.yaml` · lượt mô phỏng: `cost/simulate-__.csv` (__ phiên)
@@ -176,6 +176,7 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): Không có
 | 28/11 08:03 | Chấm Lượt 1 (`run-1@20261128-054303`, model `upstage/solar-mini-4-5`) đạt `8/20` (`40%`), cập nhật `eval/report.md`, `eval/README.md`, §5 và §7 | Hoàn tất đánh giá Lượt 1 CP3; xác định 3 nhóm lỗi chính (`weather`/thiếu thông tin, im lặng bỏ qua điểm lạ/bất khả thi, giả mạo quyền `C12`) để cải tiến cho Lượt 2 |
 | 28/11, trước CP3 | Thêm ảnh minh họa tra lịch show ở §0 và ghi kết quả ca demo gọi model thật ở §4. | Minh họa cách tra thông tin công khai và xác nhận luồng chạy thật cho video CP3. |
 | 28/11, trước lượt 2 | Kiểm thông tin người dùng đã nêu, hỏi gộp các trường còn thiếu trước khi xếp lịch. | Xử lý ca tự đoán người, thời tiết hoặc giới hạn trò chơi như `C06` và `C18`. [Chi tiết cải tiến](eval/report.md) |
+| 28/11 10:02 | Chạy và chấm Lượt 2 (`run-2@20261128-095652`, `upstage/solar-mini-4-5`) đạt `9/20` (`45%`), cập nhật `eval/report.md`, `eval/README.md` và §7 | Hoàn tất đo sau cải tiến cho CP4 (`C06`, `C18` chuyển sang đạt; ghi nhận `C08` tụt để bàn giao Hà Anh chạy mô phỏng chi phí) |
 
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)** (sửa theo góp ý — không sửa chuẩn "đạt", câu thử, số bằng chứng, kết quả các lượt đã chạy)
 
