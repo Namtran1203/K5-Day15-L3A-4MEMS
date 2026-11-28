@@ -32,10 +32,10 @@ Kết quả từng câu: `eval/run-1.csv`, `eval/run-2.csv`. Trace: `traces/run-
 
 ## 3. Một lần cải tiến
 
-- Nhắm vào nhóm lỗi: __ — vì sao là nhóm **đau nhất với người dùng**: __
-- Đã sửa gì (có thể vài thay đổi cùng nhắm nhóm lỗi đó): __
-- Kết quả: nhóm lỗi đó __/__ → __/__ · tổng __% → __%
-- Câu nào **tệ đi** sau khi sửa: __
+- **Nhóm lỗi chọn cải tiến.** Model tự điền hoặc bỏ sót thông tin đầu vào. Lượt 1 có 6 ca thuộc nhóm này, gồm `C01`, `C02`, `C04`, `C06`, `C09` và `C18`.
+- **Bản sửa.** Prompt đánh dấu thông tin thiếu bằng `null`. Python kiểm dấu hiệu số người, ngân sách, thời tiết và giới hạn trò mạnh trong đầu vào, đọc khung giờ đã nêu và hỏi gộp các trường thiếu hoặc sai định dạng. Với yêu cầu mưa đã nêu rõ, luồng có thể thu hẹp về các điểm trong nhà khi toàn bộ điểm trong nhà đều nhẹ nhàng.
+- **Kiểm trước lượt 2.** Sáu ca chạy thử với Solar Mini 4.5 đạt kiểm tra hành vi. `C06` hỏi lại các thông tin thiếu, `C18` hỏi đúng thời tiết và giới hạn trò mạnh, `C14` giữ lịch hai show, `C08` và `C20` trả lịch trong nhà, `C19` báo ngoài giờ mở cửa. Kết quả lượt 2 chờ chạy và chấm toàn bộ 20 câu.
+
 
 ## 4. Còn lại
 

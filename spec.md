@@ -175,6 +175,7 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): Không có
 | 27/11 23:10 | Mở rộng `eval/benchmark.csv` từ 12 lên 20 câu (`C13`–`C20`), giữ nguyên `C01`–`C12` | Đạt ngưỡng CP3 20–30 câu; bổ sung 4 ca `data_that` (`264996033`, `4121961`, `190400309`, `317045022` từ `evidence/summary.md`) và 4 ca sát `data/park.json` v2.0 |
 | 28/11 08:03 | Chấm Lượt 1 (`run-1@20261128-054303`, model `upstage/solar-mini-4-5`) đạt `8/20` (`40%`), cập nhật `eval/report.md`, `eval/README.md`, §5 và §7 | Hoàn tất đánh giá Lượt 1 CP3; xác định 3 nhóm lỗi chính (`weather`/thiếu thông tin, im lặng bỏ qua điểm lạ/bất khả thi, giả mạo quyền `C12`) để cải tiến cho Lượt 2 |
 | 28/11, trước CP3 | Thêm ảnh minh họa tra lịch show ở §0 và ghi kết quả ca demo gọi model thật ở §4. | Minh họa cách tra thông tin công khai và xác nhận luồng chạy thật cho video CP3. |
+| 28/11, trước lượt 2 | Kiểm thông tin người dùng đã nêu, hỏi gộp các trường còn thiếu trước khi xếp lịch. | Xử lý ca tự đoán người, thời tiết hoặc giới hạn trò chơi như `C06` và `C18`. [Chi tiết cải tiến](eval/report.md) |
 
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)** (sửa theo góp ý — không sửa chuẩn "đạt", câu thử, số bằng chứng, kết quả các lượt đã chạy)
 
